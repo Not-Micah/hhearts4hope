@@ -56,7 +56,7 @@ const NavBar = () => {
 
   return (
     <nav className='
-    w-[100vw] bg-secondary/20
+    w-[100vw] bg-white
     px-12 py-4
     flex justify-between items-center'>
         <img src="/logo.png" className="w-[50px]" />

@@ -43,7 +43,7 @@ const Footer = () => {
             w-full h-[1px] rounded-full bg-white mt-9" />
             <div className="flex justify-between items-center
             max-lg:flex-col max-lg:items-start">
-                <p className="text-sm text-white">@Copyright 2024 ILuvCats Inc. All rights reserved.</p>
+                <p className="text-sm text-white">@Copyright 2024 Hearts for Hope. All rights reserved.</p>
                 <p className="text-sm text-white">This website was built by <a href="https://micahdev.vercel.app" className="underline">Micah Tid</a>.</p>
             </div>
         </div>

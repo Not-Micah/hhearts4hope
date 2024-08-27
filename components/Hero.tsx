@@ -3,11 +3,12 @@ import React from 'react'
 const Hero = () => {
   return (
     <div
-      className='w-[100vw] h-[85vh] bg-primary/50
+      className='w-[100vw] h-[85vh] bg-black/80
       flex justify-center items-center 
       relative overflow-hidden -z-20'
     >
-        <img src="/doodle-landscape.svg" className='absolute -z-10 opacity-25' />
+        <img src="/hero.jpg" className='absolute opacity-40 -z-10
+        w-full h-full object-cover blur-[2px]' />
         <div className="
         max-w-max w-full justify-start items-center max-lg:px-4">
             <div className="max-w-[800px] w-full

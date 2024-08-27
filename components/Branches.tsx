@@ -2,8 +2,8 @@
 
 import Marquee from "react-fast-marquee";
 import { branches } from "@/data";
-import { GoogleMap, InfoWindowF, MarkerF, useJsApiLoader } from '@react-google-maps/api';
-import { FaArrowRight } from "react-icons/fa";
+import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
+import { FaRegEye } from "react-icons/fa";
 
 const containerStyle = {
   width: '100%',
@@ -37,9 +37,7 @@ const Branches = () => {
           flex justify-center items-center gap-x-2
           shadow-lg
           rounded-full px-4 py-2">
-            <p className="text-center text-lg
-            font-title uppercase font-semibold
-            leading-6 underline text-black/70">Read More</p>
+            <FaRegEye size={50} className="text-black/40" />
           </a>
           {isLoaded && (
             <GoogleMap

@@ -7,7 +7,7 @@ export const navItems = [
 
 export const contacts = [
     "Phone: 123123123",
-    "Email: iluvcats@gmail.com",
+    "Email: hearts4hope@gmail.com",
     "Address: Pineapple Street NYC"
 ]
 
@@ -29,8 +29,8 @@ export const services = [
 ]
 
 export const signUps = [
-    {img: "/doodle-landscape.svg", title: "Donate", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.", buttonLabel: "Donate", buttonLink: ""},
-    {img: "/doodle-landscape.svg", title: "Volunteer", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.", buttonLabel: "Volunteer", buttonLink: ""}
+    {img: "/donate.jpg", title: "Donate", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.", buttonLabel: "Donate", buttonLink: ""},
+    {img: "/volunteer.jpg", title: "Volunteer", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.", buttonLabel: "Volunteer", buttonLink: ""}
 ]
 
 export const testimonials = [

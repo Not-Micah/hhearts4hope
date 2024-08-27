@@ -13,7 +13,7 @@ const Services = () => {
             max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-start">
                 {services.map((service, index) => (
                     <div key={index} className="flex flex-col justify-center items-start gap-y-2">
-                        <div className="text-5xl text-secondary">
+                        <div className="text-5xl text-primary">
                             {service.icon}
                         </div>
                         <h3 className="font-title text-2xl font-semibold">
