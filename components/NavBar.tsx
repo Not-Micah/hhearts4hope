@@ -51,34 +51,48 @@ const NavModal = () => {
   )
 }
 
-const NavBar = () => {
+interface NavBarProps {
+    transparent: boolean;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ transparent }) => {
   const {onOpen, isOpen} = useNavModal();
 
   return (
-    <nav className='
-    w-[100vw] bg-white
-    px-12 py-4
-    flex justify-between items-center'>
-        <img src="/logo.png" className="w-[50px]" />
-        <div className="
-        flex justify-center items-center gap-x-8
-        max-md:hidden">
-            {navItems.map((item, index) => (
-                <a 
-                className="
-                font-semibold
-                text-black/70"
-                href={item.link} key={index}>{item.label}</a>
-            ))}
-            <Button />
+    <nav className="w-[100vw] flex justify-center items-center">
+        <div className={`
+        max-w-max w-full 
+        bg-transparent
+        px-12 py-4 max-lg:px-6
+        flex justify-between items-center
+        ${transparent && `bg-transparent px-2 max-2xl:px-8
+        absolute top-[20px] left-1/2 transform -translate-x-1/2
+        max-w-max`}`}>
+            <a href="/"
+            className={`${transparent && `bg-white p-2 rounded-full`}`}>
+                <img src="/logo.png" className="w-[40px] h-[40px] object-cover" />
+            </a>
+            <div className="
+            flex justify-center items-center gap-x-8
+            max-md:hidden">
+                {navItems.map((item, index) => (
+                    <a 
+                    className={`
+                    font-semibold
+                    text-black/70
+                    ${transparent && 'text-white'}`}
+                    href={item.link} key={index}>{item.label}</a>
+                ))}
+                <Button />
+            </div>
+            <button className="
+            hidden max-md:inline-block
+            rounded-lg bg-gray-400/40 shadow-sm
+            p-3"
+            onClick={onOpen}>
+                <RxHamburgerMenu size={25} />
+            </button>
         </div>
-        <button className="
-        hidden max-md:inline-block
-        rounded-lg bg-gray-400/40 shadow-sm
-        p-3"
-        onClick={onOpen}>
-            <RxHamburgerMenu size={25} />
-        </button>
         <NavModal />
     </nav>
   )

@@ -15,8 +15,8 @@ const SignUps = () => {
           rounded-xl shadow-md
           max-lg:h-[400px] max-lg:mb-14" />
           <div className="flex flex-col justify-center items-start gap-y-6">
-            <h3 className="font-title dynamic-subheading font-semibold">{signUp.title}</h3>
-            <p className="text-sm text-black/80">{signUp.description}</p>
+            <h3 className="font-title dynamic-subheading font-bold">{signUp.title}</h3>
+            <p className="text-content/80">{signUp.description}</p>
             <button className="bg-primary text-white 
             px-8 py-2 rounded-full">{signUp.buttonLabel}</button>
           </div>

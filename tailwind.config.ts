@@ -11,10 +11,11 @@ const config: Config = {
       colors: {
         primary: "#b80707",
         secondary: "#eb7388",
-        accent: "#fcabab"
+        accent: "#feeeee",
+        content: "#1a1a1e"
       },
       fontFamily: {
-        title: ['Poppins', 'sans-serif'], 
+        title: ['Nunito', 'sans-serif'], // Changed from Poppins to Nunito
       },
       maxWidth: {
         'max': '1300px',

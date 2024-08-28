@@ -5,7 +5,7 @@ const Services = () => {
   return (
     <div className='max-w-max mx-auto 
     py-48 px-8'>
-        <h3 className='font-title dynamic-subheading font-semibold'>Our Services</h3>
+        <h3 className='font-title dynamic-subheading font-bold'>About Us</h3>
         <div className="flex justify-start items-center gap-x-20
         mt-10
         max-lg:flex-col">
@@ -13,13 +13,14 @@ const Services = () => {
             max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-start">
                 {services.map((service, index) => (
                     <div key={index} className="flex flex-col justify-center items-start gap-y-2">
-                        <div className="text-5xl text-primary">
+                        <div className="text-3xl bg-primary text-white
+                        p-2 rounded-xl mb-5">
                             {service.icon}
                         </div>
                         <h3 className="font-title text-2xl font-semibold">
                             {service.title}
                         </h3>
-                        <p className="text-sm text-black/60">
+                        <p className="text-content/80">
                             {service.description}
                         </p>
                     </div>
