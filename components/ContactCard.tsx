@@ -14,8 +14,6 @@ const ContactCard: React.FC<ContactCardProps> = ({ className }) => {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [message, setMessage] = useState("");
 
-    const inputFieldClassName = "border-[1px] border-gray-300 rounded-md p-1 outline-none font-title w-full";
-
     return (
         <form className={twMerge(`
         flex flex-col justify-center items-center gap-y-4
@@ -30,7 +28,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ className }) => {
                     <input 
                         type="text" 
                         placeholder="Your First Name" 
-                        className={inputFieldClassName} 
+                        className="input-field" 
                         value={firstName} 
                         onChange={(e) => setFirstName(e.target.value)} 
                     />
@@ -40,7 +38,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ className }) => {
                     <input 
                         type="text" 
                         placeholder="Your Last Name" 
-                        className={inputFieldClassName} 
+                        className="input-field"
                         value={lastName} 
                         onChange={(e) => setLastName(e.target.value)} 
                     />
@@ -51,7 +49,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ className }) => {
                 <input 
                     type="email" 
                     placeholder="Your Email Address" 
-                    className={inputFieldClassName} 
+                    className="input-field"
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)} 
                 />
@@ -61,7 +59,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ className }) => {
                 <input 
                     type="number" 
                     placeholder="Your Phone Number" 
-                    className={inputFieldClassName} 
+                    className="input-field"
                     value={phoneNumber} 
                     onChange={(e) => setPhoneNumber(e.target.value)} 
                 />
@@ -70,7 +68,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ className }) => {
                 <p>Message</p>
                 <textarea 
                     placeholder="Your Message" 
-                    className={twMerge(inputFieldClassName, "resize-y")} 
+                    className="input-field resize-y"
                     value={message} 
                     onChange={(e) => setMessage(e.target.value)} 
                     rows={4}
