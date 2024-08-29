@@ -22,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({
         <Dialog.Content className="fixed drop-shadow-md top-[50%] left-[50%] 
         max-h-full h-full md:h-auto md:max-h-[85vh] w-full md:w-[90vw] md:max-w-[450px]
         translate-x-[-50%] translate-y-[-50%] rounded-md bg-white p-[25px] focus:outline-none">
-            <Dialog.Title className="text-xl text-center font-bold mb-4">
+            <Dialog.Title className="text-xl text-left font-bold mb-4">
                 {title}
             </Dialog.Title>
             <div className="">

@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { DocumentData } from "firebase/firestore";
-import { getBranches, initializeFirebase } from "@/utils/database";
+import { getBranches } from "@/utils/database";
 
 type BranchContextType = {
     branches: DocumentData[] | null;
@@ -17,21 +17,11 @@ export interface Props {
 }
 
 export const BranchContextProvider = (props: Props) => {
-    const app = initializeFirebase();
     const [branches, setBranches] = useState<DocumentData[] | null>(null);
 
     useEffect(() => {
-        const fetchBranches = async () => {
-            try {
-                const fetchedBranches = await getBranches(); 
-                setBranches(fetchedBranches); 
-            } catch (error) {
-                console.error("Error fetching branches:", error);
-                setBranches(null);
-            }
-        };
-
-        fetchBranches();
+        const unsubscribe = getBranches(setBranches);
+        return () => unsubscribe();
     }, []);
 
     const value = {

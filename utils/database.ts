@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, query, where, DocumentData } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, query, where, DocumentData,
+    onSnapshot, doc
+ } from "firebase/firestore";
 
 // Note: EVERYONE Can Read and Write Documents
 
@@ -24,19 +26,21 @@ export const getFireStore = () => {
     return firestore;
 }
 
-export const getBranches = async (): Promise<DocumentData[]> => {
+export const getBranches = (setBranches: (branches: DocumentData[]) => void) => {
     const app = initializeFirebase();
     const firestore = getFirestore(app);
 
     const branchesCollection = collection(firestore, 'branches');
-    const querySnapshot = await getDocs(branchesCollection);
-    const branches: DocumentData[] = [];
 
-    querySnapshot.forEach((doc) => {
-        branches.push(doc.data());
+    const unsubscribe = onSnapshot(branchesCollection, (querySnapshot) => {
+        const branches: DocumentData[] = [];
+        querySnapshot.forEach((doc) => {
+            branches.push(doc.data());
+        });
+        setBranches(branches);
     });
 
-    return branches;
+    return unsubscribe;
 };
 
 export const addBranch = async (
@@ -98,13 +102,13 @@ export const editBranch = async (
     });
 };
 
-export const deleteBranch = async (id: string): Promise<void> => {
+export const deleteBranch = async (prevLocation: string): Promise<void> => {
     const app = initializeFirebase(); 
     const firestore = getFirestore(app);
 
     const q = query(
         collection(firestore, 'branches'), 
-        where('__name__', '==', id)
+        where('location', '==', prevLocation)
     );
 
     const querySnapshot = await getDocs(q);

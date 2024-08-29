@@ -7,10 +7,10 @@ interface BranchModal {
   //////////////////
   location: string;
   setLocation: (newLocation: string) => void;
-  lat: number;
-  setLat: (newLat: number) => void;
-  lng: number;
-  setLng: (newLng: number) => void;
+  lat: string;
+  setLat: (newLat: string) => void;
+  lng: string;
+  setLng: (newLng: string) => void;
   firstName: string;
   setFirstName: (newFirstName: string) => void;
   lastName: string;
@@ -33,10 +33,10 @@ const useBranchModal = create<BranchModal>((set) => ({
   //////////////////
   location: "",
   setLocation: (newLocation: string) => set({ location: newLocation }),
-  lat: 0,
-  setLat: (newLat: number) => set({ lat: newLat }),
-  lng: 0,
-  setLng: (newLng: number) => set({ lng: newLng }),
+  lat: "",
+  setLat: (newLat: string) => set({ lat: newLat }),
+  lng: "",
+  setLng: (newLng: string) => set({ lng: newLng }),
   firstName: "",
   setFirstName: (newFirstName: string) => set({ firstName: newFirstName }),
   lastName: "",

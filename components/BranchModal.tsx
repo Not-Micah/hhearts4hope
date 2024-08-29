@@ -10,15 +10,14 @@ interface InputFieldProps {
     placeholder: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    type?: string; 
 }
 
-const InputField: React.FC<InputFieldProps> = ({ label, placeholder, value, onChange, type = "text" }) => {
+const InputField: React.FC<InputFieldProps> = ({ label, placeholder, value, onChange  }) => {
     return (
         <div className="w-full">
             <p>{label}</p>
             <input
-                type={type}
+                type="text"
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
@@ -49,9 +48,9 @@ const BranchModal = () => {
 
                 if (location && lat && lng && firstName && lastName && branchInstagram) {
                     if (newBranch) {
-                        addBranch(location, lat, lng, firstName, lastName, branchInstagram);
+                        addBranch(location, parseFloat(lat) || 1, parseFloat(lng) || 1, firstName, lastName, branchInstagram);
                     } else {
-                        editBranch(prevBranch, location, lat, lng, firstName, lastName, branchInstagram);
+                        editBranch(prevBranch, location, parseFloat(lat) || 1, parseFloat(lng) || 1, firstName, lastName, branchInstagram);
                     }
                 }
 
@@ -68,15 +67,13 @@ const BranchModal = () => {
                         label="Latitude" 
                         placeholder="Latitude..." 
                         value={lat.toString()} 
-                        type="number" 
-                        onChange={(e) => setLat(parseFloat(e.target.value) || 1)}
+                        onChange={(e) => setLat(e.target.value)}
                     />
                     <InputField 
                         label="Longitude" 
                         placeholder="Longitude..." 
                         value={lng.toString()} 
-                        type="number" 
-                        onChange={(e) => setLng(parseFloat(e.target.value) || 1)} 
+                        onChange={(e) => setLng(e.target.value)} 
                     />
                 </div> 
                 <div className="flex flex-row justify-center items-center gap-x-6 w-full">
