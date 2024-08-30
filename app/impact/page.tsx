@@ -1,8 +1,13 @@
-import React from 'react'
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 const Impact = () => {
   return (
-    <div>Impact</div>
+    <div>
+      <NavBar transparent={false} />
+      Some statistics, branch information... etc.
+      <Footer />
+    </div>
   )
 }
 

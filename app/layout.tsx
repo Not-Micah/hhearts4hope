@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { BranchContextProvider } from "@/providers/useBranchData";
 import ModalProvider from "@/providers/ModalProvider";
+import ToasterProvider from "@/providers/ToasterProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <BranchContextProvider>
             <ModalProvider />
+            <ToasterProvider />
             {children}
         </BranchContextProvider>
       </body>

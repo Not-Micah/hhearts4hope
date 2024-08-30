@@ -3,6 +3,8 @@ import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, query,
     onSnapshot, doc
  } from "firebase/firestore";
 
+ import toast from "react-hot-toast";
+
 // Note: EVERYONE Can Read and Write Documents
 
 export const initializeFirebase = () => {
@@ -65,9 +67,9 @@ export const addBranch = async (
             branchInstagram,
         });
 
-        console.log("Branch added successfully");
+        toast.success("Successfully Added Branch");
     } catch (error) {
-        console.error("Error adding branch:", error);
+        toast.success("Oops! An Error Occured...");
     }
 };
 
@@ -100,6 +102,8 @@ export const editBranch = async (
             branchInstagram,
         });
     });
+
+    toast.success("Successfully Edited Branch");
 };
 
 export const deleteBranch = async (prevLocation: string): Promise<void> => {
@@ -116,4 +120,6 @@ export const deleteBranch = async (prevLocation: string): Promise<void> => {
     querySnapshot.forEach((doc) => {
         deleteDoc(doc.ref);
     });
+
+    toast.success("Successfully Deleted Branch");
 };
