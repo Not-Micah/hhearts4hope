@@ -6,24 +6,21 @@ import useConfirmationModal from "@/hooks/useDeleteConfirmationModal";
 
 import { MdDelete } from "react-icons/md";
 
-const AdminDashboard = () => {
+const BranchDashboard = () => {
   const { branches } = useBranchData();
   
   const {
     onOpen: openConfirmationModal,
     setConfirmationMessage,
-    setLocationToDelete
+    setCityToDelete,
+    setHighschoolToDelete
   } = useConfirmationModal();
   const {
-    setLocation,
-    setLat,
-    setLng,
-    setFirstName,
-    setLastName,
-    setBranchInstagram,
     setNewBranch,
     onOpen: openBranchModal,
-    setPrevBranch,
+    setCurrentBranch,
+    updated,
+    setUpdated
   } = useBranchModal();
 
   if (branches === null) {
@@ -45,27 +42,23 @@ const AdminDashboard = () => {
               onClick={() => {
                 console.log(item);
                 // Setting Dialogue Data
-                setLocation(item.location);
-                setLat(item.lat);
-                setLng(item.lng);
-                setFirstName(item.firstName);
-                setLastName(item.lastName);
-                setBranchInstagram(item.branchInstagram);
-                setPrevBranch(item.location);
+                setCurrentBranch(item);
                 setNewBranch(false);
+                setUpdated(!updated);
 
                 // Opening the Modal
                 openBranchModal();
               }}
               className="text-lg font-semibold font-title"
             >
-              {item.location}
+              {item.city} {item.country} --- {item.highschool}
             </button>
             <button
             className="rounded-full text-lg"
             onClick={() => {
               setConfirmationMessage(`Are you sure you want to delete the branch ${item.location}?`);
-              setLocationToDelete(item.location)
+              setCityToDelete(item.city);
+              setHighschoolToDelete(item.highschool);
               openConfirmationModal();
             }}>
               <MdDelete />
@@ -76,14 +69,9 @@ const AdminDashboard = () => {
       <button
         onClick={() => {
           // Clearing the Data
-          setLocation("");
-          setLat("");
-          setLng("");
-          setFirstName("");
-          setLastName("");
-          setBranchInstagram("");
-          setPrevBranch("");
+          setCurrentBranch(null);
           setNewBranch(true);
+          setUpdated(!updated);
 
           // Opening the Modal
           openBranchModal();
@@ -97,4 +85,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default BranchDashboard;

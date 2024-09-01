@@ -5,7 +5,7 @@ import useDeleteConfirmationModal from "@/hooks/useDeleteConfirmationModal";
 import { deleteBranch } from "@/utils/database";
 
 const DeleteConfirmationModal = () => {
-  const { onClose, isOpen, confirmationMessage, locationToDelete } =
+  const { onClose, isOpen, confirmationMessage, cityToDelete, highschoolToDelete } =
     useDeleteConfirmationModal();
   const buttonStyles = `px-4 py-2 bg-primary text-white font-bold rounded-full`;
 
@@ -21,7 +21,7 @@ const DeleteConfirmationModal = () => {
         <button
           className={buttonStyles}
           onClick={() => {
-            deleteBranch(locationToDelete);
+            deleteBranch(cityToDelete, highschoolToDelete);
             onClose();
           }}
         >

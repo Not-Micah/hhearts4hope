@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, query, where, DocumentData,
-    onSnapshot, doc
+    onSnapshot
  } from "firebase/firestore";
+ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
  import toast from "react-hot-toast";
 
@@ -46,80 +47,113 @@ export const getBranches = (setBranches: (branches: DocumentData[]) => void) => 
 };
 
 export const addBranch = async (
-    location: string,
+    country: string,
+    city: string,
+    highschool: string,
     lat: number,
     lng: number,
     firstName: string,
     lastName: string,
-    branchInstagram: string
-): Promise<void> => {
+    description: string,
+    photo: File
+) => {
     try {
         const app = initializeFirebase();
         const firestore = getFirestore(app);
-        const branchesCollection = collection(firestore, 'branches');
+        const storage = getStorage(app);
 
+        // Upload photo to Firebase Storage
+        const photoRef = ref(storage, `branches/${photo.name}`);
+        await uploadBytes(photoRef, photo);
+        const photoURL = await getDownloadURL(photoRef);
+
+        const branchesCollection = collection(firestore, 'branches');
         await addDoc(branchesCollection, {
-            location,
+            country,
+            city,
+            highschool,
             lat,
             lng,
             firstName,
             lastName,
-            branchInstagram,
+            description,
+            photo: photoURL, 
         });
 
         toast.success("Successfully Added Branch");
     } catch (error) {
-        toast.success("Oops! An Error Occured...");
+        toast.success("Oops! An Error Occurred...");
     }
 };
 
 export const editBranch = async (
-    prevLocation: string,
-    location: string,
+    country: string,
+    city: string,
+    highschool: string,
     lat: number,
     lng: number,
     firstName: string,
     lastName: string,
-    branchInstagram: string
-): Promise<void> => {
+    description: string,
+    prevCity: string,
+    prevHighschool: string
+) => {
     const app = initializeFirebase(); 
     const firestore = getFirestore(app);
 
-    const q = query(
-        collection(firestore, 'branches'),
-        where('location', '==', prevLocation)
-    );
-
-    const querySnapshot = await getDocs(q); 
-
-    querySnapshot.forEach((doc) => {
-        updateDoc(doc.ref, {
-            location,
-            lat,
-            lng,
-            firstName,
-            lastName,
-            branchInstagram,
+    try {
+        // Values for city and highschool are updated,
+        // so must take previous values for current
+        const q = query(
+            collection(firestore, 'branches'),
+            where('city', '==', prevCity),
+            where('highschool', '==', prevHighschool)
+        );
+    
+        const querySnapshot = await getDocs(q);
+    
+        querySnapshot.forEach((doc) => {
+            updateDoc(doc.ref, {
+                country,
+                city,
+                highschool,
+                lat,
+                lng,
+                firstName,
+                lastName,
+                description
+            });
         });
-    });
-
-    toast.success("Successfully Edited Branch");
+    
+        toast.success("Successfully Edited Branch");
+    } catch (error) {
+        toast.success("Oops! An Error Occurred...");
+    }
 };
 
-export const deleteBranch = async (prevLocation: string): Promise<void> => {
+export const deleteBranch = async (city: string, highschool: string) => {
     const app = initializeFirebase(); 
     const firestore = getFirestore(app);
 
-    const q = query(
-        collection(firestore, 'branches'), 
-        where('location', '==', prevLocation)
-    );
+    console.log("City ", city);
+    console.log("Highschool ", highschool);
 
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-        deleteDoc(doc.ref);
-    });
-
-    toast.success("Successfully Deleted Branch");
+    try {
+        const q = query(
+            collection(firestore, 'branches'), 
+            where('city', '==', city),
+            where('highschool', '==', highschool)
+        );
+    
+        const querySnapshot = await getDocs(q);
+    
+        querySnapshot.forEach((doc) => {
+            console.log(doc);
+            deleteDoc(doc.ref);
+        });
+    
+        toast.success("Successfully Deleted Branch");
+    } catch (error) {
+        toast.success("Oops! An Error Occurred...");
+    }
 };

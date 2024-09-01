@@ -2,12 +2,14 @@ import { create } from 'zustand';
 
 interface DeleteConfirmationModal {
   isOpen: boolean;
-  onOpen: () => void
+  onOpen: () => void;
   onClose: () => void;
   confirmationMessage: string;
   setConfirmationMessage: (newMessage: string) => void;
-  locationToDelete: string;
-  setLocationToDelete: (location: string) => void;
+  cityToDelete: string;
+  setCityToDelete: (city: string) => void;
+  highschoolToDelete: string;
+  setHighschoolToDelete: (highschool: string) => void;
 }
 
 const useDeleteConfirmationModal = create<DeleteConfirmationModal>((set) => ({
@@ -16,9 +18,10 @@ const useDeleteConfirmationModal = create<DeleteConfirmationModal>((set) => ({
   onClose: () => set({ isOpen: false }),
   confirmationMessage: "",
   setConfirmationMessage: (newMessage: string) => set({ confirmationMessage: newMessage }),
-  locationToDelete: "",
-  setLocationToDelete: (location: string) => set({locationToDelete: location})
+  cityToDelete: "",
+  setCityToDelete: (city: string) => set({ cityToDelete: city }),
+  highschoolToDelete: "",
+  setHighschoolToDelete: (highschool: string) => set({ highschoolToDelete: highschool })
 }));
-
 
 export default useDeleteConfirmationModal;
