@@ -140,12 +140,11 @@ const BranchModal = () => {
                         onChange={(e) => setLastName(e.target.value)}
                     />
                 </div>
-                {newBranch && (
-                    <div className="w-full">
-                        <p>Branch Image</p>
-                        <input type="file" onChange={handleImageChange} className="input-field text-gray-400" />
-                    </div>
-                )}
+                <div className="w-full">
+                    <p className={`${!newBranch && "text-black/50"}`}>Branch Image</p>
+                    <input type="file" onChange={handleImageChange} className="input-field text-gray-400"
+                    disabled={!newBranch} />
+                </div>
                 <button
                     type="submit"
                     className="px-4 py-2 bg-primary text-white font-bold w-full rounded-full"

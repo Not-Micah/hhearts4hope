@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import EntryField from "./components/EntryField";
 import BranchDashboard from "./components/BranchDashboard";
-import GalleryDashboard from "./components/GalleryDashboard";
 import StatisticsDashboard from "./components/StatisticsDashboard";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -27,15 +26,11 @@ const Admin = () => {
                     <div className="flex justify-center items-center gap-x-6">
                         <button onClick={() => setActiveState("branches")}
                             className={`${activeState === "branches" ? "text-black underline" : "text-gray-300"}`}>Branches</button>
-                        <button onClick={() => setActiveState("gallery")}
-                            className={`${activeState === "gallery" ? "text-black underline" : "text-gray-300"}`}>Gallery</button>
                         <button onClick={() => setActiveState("statistics")}
                             className={`${activeState === "statistics" ? "text-black underline" : "text-gray-300"}`}>Statistics</button>
                     </div>
                     {activeState === "branches" ? (
                         <BranchDashboard />
-                    ) : activeState === "gallery" ? (
-                        <GalleryDashboard />
                     ) : (
                         <StatisticsDashboard />
                     )}

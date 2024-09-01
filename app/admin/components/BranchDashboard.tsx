@@ -1,20 +1,12 @@
-import { useState, useEffect } from "react";
+
 import { useBranchData } from "@/providers/useBranchData";
 import useBranchModal from "@/hooks/useBranchModal";
-import { deleteBranch } from "@/utils/database";
-import useConfirmationModal from "@/hooks/useDeleteConfirmationModal";
+import BranchItem from "./BranchItem";
 
-import { MdDelete } from "react-icons/md";
 
 const BranchDashboard = () => {
   const { branches } = useBranchData();
-  
-  const {
-    onOpen: openConfirmationModal,
-    setConfirmationMessage,
-    setCityToDelete,
-    setHighschoolToDelete
-  } = useConfirmationModal();
+
   const {
     setNewBranch,
     onOpen: openBranchModal,
@@ -38,31 +30,7 @@ const BranchDashboard = () => {
             className="flex flex-row justify-between items-center gap-x-4
             w-[500px] border-b-2 pb-3"
           >
-            <button
-              onClick={() => {
-                console.log(item);
-                // Setting Dialogue Data
-                setCurrentBranch(item);
-                setNewBranch(false);
-                setUpdated(!updated);
-
-                // Opening the Modal
-                openBranchModal();
-              }}
-              className="text-lg font-semibold font-title"
-            >
-              {item.city} {item.country} --- {item.highschool}
-            </button>
-            <button
-            className="rounded-full text-lg"
-            onClick={() => {
-              setConfirmationMessage(`Are you sure you want to delete the branch ${item.location}?`);
-              setCityToDelete(item.city);
-              setHighschoolToDelete(item.highschool);
-              openConfirmationModal();
-            }}>
-              <MdDelete />
-            </button>
+              <BranchItem branch={item} />
           </div>
         ))}
       </div>
