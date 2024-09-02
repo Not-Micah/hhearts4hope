@@ -31,7 +31,7 @@ const Branches = () => {
         <Marquee speed={25} gradient={false} className="w-full">
           {branches?.map((branch, index) => (
             <div key={index} className="p-4 mx-5 font-title text-xl bg-white rounded-lg shadow-lg">
-              {branch.location}
+              {branch.city} {branch.country}
             </div>
           ))}
         </Marquee>

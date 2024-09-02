@@ -1,5 +1,3 @@
-import React from 'react'
-
 const AboutFounder = () => {
   return (
     <div className="w-[100vw] bg-primary/50

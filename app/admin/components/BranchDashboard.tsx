@@ -5,7 +5,7 @@ import BranchItem from "./BranchItem";
 
 
 const BranchDashboard = () => {
-  const { branches } = useBranchData();
+  const { sortedBranches } = useBranchData();
 
   const {
     setNewBranch,
@@ -15,7 +15,7 @@ const BranchDashboard = () => {
     setUpdated
   } = useBranchModal();
 
-  if (branches === null) {
+  if (sortedBranches === null) {
     return <div>Loading</div>;
   }
 
@@ -24,7 +24,7 @@ const BranchDashboard = () => {
     overflow-y-scroll no-scrollbar py-12">
       <h3 className="dynamic-subheading font-title font-semibold">Branches</h3>
       <div className="flex flex-col justify-center items-start gap-y-2">
-        {branches.map((item, index) => (
+        {sortedBranches?.map((item, index) => (
           <div
             key={index}
             className="flex flex-row justify-between items-center gap-x-4

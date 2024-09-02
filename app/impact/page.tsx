@@ -1,11 +1,12 @@
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import CountryList from "./components/CountryList";
 
 const Impact = () => {
   return (
     <div>
       <NavBar transparent={false} />
-      Some statistics, branch information... etc.
+      <CountryList />
       <Footer />
     </div>
   )
