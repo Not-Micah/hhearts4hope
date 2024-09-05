@@ -32,6 +32,7 @@ const BranchModal = () => {
 
     // Unique useState hooks for each input field
     const [country, setCountry] = useState("");
+    const [state, setState] = useState("");
     const [city, setCity] = useState("");
     const [highschool, setHighschool] = useState("");
     const [description, setDescription] = useState("");
@@ -71,11 +72,11 @@ const BranchModal = () => {
         const longitude = parseFloat(lng) || 1;
 
         if (country && city && highschool && lat && lng && firstName && lastName && imageFile && newBranch) {
-            addBranch(country, city, highschool, latitude, longitude, firstName, lastName, description, imageFile);
+            addBranch(country, state || "", city, highschool, latitude, longitude, firstName, lastName, description, imageFile);
             onClose();
         } else if (country && city && highschool && lat && lng && firstName && lastName && description && !newBranch) {
             editBranch(
-                country, city, highschool, latitude, longitude, firstName, lastName, description, 
+                country, state || "", city, highschool, latitude, longitude, firstName, lastName, description, 
                 currentBranch?.city || "", currentBranch?.highschool || ""
             );
             onClose();
@@ -90,25 +91,31 @@ const BranchModal = () => {
             >
                 <InputField
                     label="Country"
-                    placeholder="Germany..."
+                    placeholder="Country..."
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                 />
                 <InputField
+                    label="State (optional)"
+                    placeholder="State..."
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                />
+                <InputField
                     label="City"
-                    placeholder="Berlin... // Texas, Austin"
+                    placeholder="City..."
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                 />
                 <InputField
                     label="Highschool"
-                    placeholder="Frankfurt International School..."
+                    placeholder="Highschool..."
                     value={highschool}
                     onChange={(e) => setHighschool(e.target.value)}
                 />
                 <InputField
                     label="Description"
-                    placeholder="About..."
+                    placeholder="Description..."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />

@@ -18,11 +18,11 @@ const Admin = () => {
   return (
     <div className="w-[100vw]">
         <NavBar transparent={false} />
-        <div className="w-[100vw] h-[85vh]
-        max-[1000px]:hidden">
+        <div className="h-[85vh]
+        max-[1000px]:hidden max-w-[1000px] w-full mx-auto">
             {adminStatus ? (
-                <div className="w-full h-full
-                flex flex-col justify-center items-center">
+                <div className="w-full h-full py-24
+                flex flex-col justify-start items-center">
                     <div className="flex justify-center items-center gap-x-6">
                         <button onClick={() => setActiveState("branches")}
                             className={`${activeState === "branches" ? "text-black underline" : "text-gray-300"}`}>Branches</button>

@@ -48,6 +48,7 @@ export const getBranches = (setBranches: (branches: DocumentData[]) => void) => 
 
 export const addBranch = async (
     country: string,
+    state: string,
     city: string,
     highschool: string,
     lat: number,
@@ -73,6 +74,7 @@ export const addBranch = async (
         const branchDocRef = await addDoc(branchesCollection, {
             country,
             city,
+            state,
             highschool,
             lat,
             lng,
@@ -90,6 +92,7 @@ export const addBranch = async (
 
 export const editBranch = async (
     country: string,
+    state: string,
     city: string,
     highschool: string,
     lat: number,
@@ -117,6 +120,7 @@ export const editBranch = async (
         querySnapshot.forEach((doc) => {
             updateDoc(doc.ref, {
                 country,
+                state,
                 city,
                 highschool,
                 lat,

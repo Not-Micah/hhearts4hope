@@ -1,12 +1,12 @@
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import CountryList from "./components/CountryList";
+import BranchList from "./components/BranchList";
 
 const Impact = () => {
   return (
-    <div>
+    <div className="">
       <NavBar transparent={false} />
-      <CountryList />
+      <BranchList />
       <Footer />
     </div>
   )
