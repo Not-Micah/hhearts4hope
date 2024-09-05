@@ -59,10 +59,10 @@ const NavBar: React.FC<NavBarProps> = ({ transparent }) => {
   const {onOpen, isOpen} = useNavModal();
 
   return (
-    <nav className="w-[100vw] flex justify-center items-center">
+    <nav className="w-[100vw] flex justify-center items-center
+        bg-primary/30">
         <div className={`
         max-w-max w-full 
-        bg-transparent
         px-12 py-4 max-lg:px-6
         flex justify-between items-center
         ${transparent && `bg-transparent px-2 max-2xl:px-8

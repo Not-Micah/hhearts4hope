@@ -1,8 +1,14 @@
-import React from 'react'
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
+import AboutFounder from "./components/AboutFounder";
 
 const About = () => {
   return (
-    <div>About</div>
+    <div>
+      <NavBar transparent={false} />
+      <AboutFounder />
+      <Footer />
+    </div>
   )
 }
 

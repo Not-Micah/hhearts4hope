@@ -1,8 +1,14 @@
-import React from 'react'
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
+import CountryList from "./components/CountryList";
 
 const Impact = () => {
   return (
-    <div>Impact</div>
+    <div>
+      <NavBar transparent={false} />
+      <CountryList />
+      <Footer />
+    </div>
   )
 }
 

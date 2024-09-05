@@ -12,6 +12,10 @@
   .dynamic-subheading {
     @apply text-5xl max-lg:text-3xl
   }
+
+  .input-field {
+    @apply border-[1px] border-gray-300 rounded-md p-1 outline-none font-title w-full
+  }
 }
 
 @layer utilities {

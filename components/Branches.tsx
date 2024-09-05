@@ -1,9 +1,11 @@
 "use client";
 
 import Marquee from "react-fast-marquee";
-import { branches } from "@/data";
 import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
 import { FaRegEye } from "react-icons/fa";
+import { useBranchData } from "@/providers/useBranchData";
+
+import { useEffect } from "react";
 
 const containerStyle = {
   width: '100%',
@@ -16,14 +18,20 @@ const Branches = () => {
     googleMapsApiKey: "AIzaSyDmKrYRHIl-efX8ZoEMgSIJM6jjaQD_-2c"
   });
 
+  const { branches } = useBranchData();
+
+  useEffect(() => {
+    console.log(branches, "branches")
+  }, [branches])
+
   return (
     <div className='w-[100vw] px-4 py-16 flex justify-center items-center bg-accent'>
       <div className="max-w-max w-full flex flex-col justify-center items-center gap-y-8">
         <h3 className='dynamic-subheading font-bold font-title'>Branches</h3>
         <Marquee speed={25} gradient={false} className="w-full">
-          {branches.map((branch, index) => (
-            <div key={index} className="p-4 mx-2 font-title text-xl bg-white rounded-lg shadow-lg">
-              {branch.label}
+          {branches?.map((branch, index) => (
+            <div key={index} className="p-4 mx-5 font-title text-xl bg-white rounded-lg shadow-lg">
+              {branch.city} {branch.country}
             </div>
           ))}
         </Marquee>
@@ -45,8 +53,8 @@ const Branches = () => {
               center={{lat: 51.509865, lng: -0.118092}}
               zoom={2} 
             >
-              {branches.map((branch, index) => (
-                <MarkerF key={index} position={branch.location} />
+              {branches?.map((branch, index) => (
+                <MarkerF key={index} position={{lat: branch.lat, lng: branch.lng}} />
               ))}
             </GoogleMap>
           )}
