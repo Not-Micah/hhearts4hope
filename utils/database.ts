@@ -8,6 +8,10 @@ import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, query,
 
 // Note: EVERYONE Can Read and Write Documents
 
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
 export const initializeFirebase = () => {
     const firebaseConfig = {
         apiKey: "AIzaSyB7I557GJHhryfjsXmFHkF-4OLZVh5XwJA",
@@ -28,6 +32,10 @@ export const getFireStore = () => {
     const firestore = getFirestore();
     return firestore;
 }
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
 
 export const getBranches = (setBranches: (branches: DocumentData[]) => void) => {
     const app = initializeFirebase();
@@ -344,5 +352,61 @@ export const deleteGalleryItem = async (
     } catch (error) {
         console.error("Error deleting gallery item:", error);
         toast.error("Oops! An Error Occurred...");
+    }
+};
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+export const getStatistics = (setStatistics: (statistics: DocumentData[]) => void) => {
+    const app = initializeFirebase();
+    const firestore = getFirestore(app);
+
+    const statisticsCollection = collection(firestore, 'statistics');
+
+    const unsubscribe = onSnapshot(statisticsCollection, (querySnapshot) => {
+        const statistics: DocumentData[] = [];
+        querySnapshot.forEach((doc) => {
+            statistics.push(doc.data());
+        });
+        setStatistics(statistics);
+    });
+
+    return unsubscribe;
+};
+
+export const editStatistic = async (
+    index: number,
+    label: string,
+    number: string
+) => {
+    try {
+        const app = initializeFirebase();
+        const firestore = getFirestore(app);
+        const statisticsCollection = collection(firestore, 'statistics');
+
+        const statisticQuery = query(
+            statisticsCollection,
+            where("index", "==", index)
+        );
+
+        const querySnapshot = await getDocs(statisticQuery);
+
+        if (querySnapshot.empty) {
+            console.error("No matching statistic found");
+            return;
+        }
+
+        const statisticDocRef = querySnapshot.docs[0].ref;
+
+        await updateDoc(statisticDocRef, {
+            label,
+            number
+        });
+
+        console.log("Statistic updated successfully");
+    } catch (error) {
+        console.error("Error updating statistic:", error);
     }
 };

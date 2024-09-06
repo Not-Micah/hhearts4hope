@@ -1,3 +1,4 @@
+"use client";
 
 import { useBranchData } from "@/providers/useBranchData";
 import useBranchModal from "@/hooks/useBranchModal";

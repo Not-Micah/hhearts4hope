@@ -2,10 +2,12 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { DocumentData } from "firebase/firestore";
-import { getBranches } from "@/utils/database";
+
+import { getBranches, getStatistics } from "@/utils/database";
 
 type BranchContextType = {
     branches: DocumentData[] | null;
+    statistics: DocumentData[] | null;
 };
 
 export const BranchContext = createContext<BranchContextType | undefined>(
@@ -18,14 +20,21 @@ export interface Props {
 
 export const BranchContextProvider = (props: Props) => {
     const [branches, setBranches] = useState<DocumentData[] | null>(null);
+    const [statistics, setStatistics] = useState<DocumentData[] | null>(null);
 
     useEffect(() => {
         const unsubscribe = getBranches(setBranches);
         return () => unsubscribe();
     }, []);
 
+    useEffect(() => {
+        const unsubscribe = getStatistics(setStatistics);
+        return () => unsubscribe();
+    }, []);
+
     const value = {
-        branches
+        branches,
+        statistics
     };
 
     return <BranchContext.Provider value={value} {...props} />;

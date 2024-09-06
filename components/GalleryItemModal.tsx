@@ -1,31 +1,11 @@
 "use client";
 
 import Modal from "./Modal";
+import InputField from "./InputField";
+
 import useGalleryModal from "@/hooks/useGalleryModal";
 import { addGalleryItem, editGalleryItem } from "@/utils/database";
 import { useState, useEffect } from "react";
-
-interface InputFieldProps {
-    label: string;
-    placeholder: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const InputField: React.FC<InputFieldProps> = ({ label, placeholder, value, onChange }) => {
-    return (
-        <div className="w-full">
-            <p>{label}</p>
-            <input
-                type="text"
-                placeholder={placeholder}
-                value={value}
-                onChange={onChange}
-                className="input-field"
-            />
-        </div>
-    );
-};
 
 const GalleryModal = () => {
     const { onClose, isOpen, newGalleryItem, currentGalleryItem, updated, galleryBranch } = useGalleryModal();
