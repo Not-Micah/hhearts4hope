@@ -1,15 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from 'next/navigation';
+
 import { DocumentData } from "firebase/firestore";
+
+import BranchDisplay from "./BranchDisplay";
+
 import { CountryData, organizeBranchesByCountry } from "@/utils/functions";
 import { useBranchData } from "@/providers/useBranchData";
+import { twMerge } from "tailwind-merge";
+
+const cardStyles = `px-6 py-4 rounded-lg bg-gray-200`;
 
 const BranchList = () => {
     const { branches } = useBranchData();
     const [organizedBranches, setOrganizedBranches] = useState<null | CountryData[]>(null);
-    
+
     const router = useRouter();
     const searchParams = useSearchParams();
     
@@ -23,14 +30,14 @@ const BranchList = () => {
         }
     }, [branches]);
 
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
+
     const handleCountryClick = (country: string) => {
         router.push(`?country=${country}`);
     };
 
-
-    ///////////////////////////////////////
-    ///////////////////////////////////////
-    ///////////////////////////////////////
     const handleStateClick = (state: string) => {
         if (selectedCountry) {
             router.push(`?country=${selectedCountry}&state=${state}`);
@@ -43,17 +50,14 @@ const BranchList = () => {
         }
     };
 
-    ///////////////////////////////////////
-    ///////////////////////////////////////
-    ///////////////////////////////////////
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
+
     const renderBranches = (branches: DocumentData[]) => (
         <div>
             {branches.map((branch, index) => (
-                <div key={index}>
-                    <p>{branch.firstName} {branch.lastName}</p>
-                    <p>{branch.city}</p>
-                    <p>{branch.highschool}</p>
-                </div>
+                <BranchDisplay key={index} branch={branch} />
             ))}
         </div>
     );
@@ -61,21 +65,30 @@ const BranchList = () => {
     const renderCountryList = () => (
         <div className="flex justify-start items-center gap-x-4">
             {organizedBranches?.map((countryData, index) => (
-                <div key={index} onClick={() => handleCountryClick(countryData.country)}>
+                <button
+                    className={cardStyles}
+                    key={index}
+                    onClick={() => handleCountryClick(countryData.country)}
+                >
                     {countryData.country}
-                </div>
+                </button>
             ))}
         </div>
     );
 
     const renderStateList = () => {
         const usaData = organizedBranches?.find((country) => country.country === "USA");
+
         return (
             <div className="flex justify-start items-center gap-x-4">
                 {usaData?.states?.map((stateData, index) => (
-                    <div key={index} onClick={() => handleStateClick(stateData.state)}>
+                    <button
+                        className={cardStyles}
+                        key={index}
+                        onClick={() => handleStateClick(stateData.state)}
+                    >
                         {stateData.state}
-                    </div>
+                    </button>
                 ))}
             </div>
         );
@@ -87,26 +100,30 @@ const BranchList = () => {
         if (selectedCountry === "USA") {
             const stateData = organizedBranches?.find((country) => country.country === "USA")
                 ?.states?.find((state) => state.state === selectedState);
-            cityList = stateData?.branches?.map((branch) => branch.city) || [];
+            cityList = stateData?.cities?.map(city => city.city) || [];
         } else {
             const countryData = organizedBranches?.find((country) => country.country === selectedCountry);
-            cityList = countryData?.branches?.map((branch) => branch.city) || [];
+            cityList = countryData?.cities?.map(city => city.city) || [];
         }
 
         return (
             <div className="flex justify-start items-center gap-x-4">
                 {cityList.map((city, index) => (
-                    <div key={index} onClick={() => handleCityClick(city)}>
+                    <button
+                        className={cardStyles}
+                        key={index}
+                        onClick={() => handleCityClick(city)}
+                    >
                         {city}
-                    </div>
+                    </button>
                 ))}
             </div>
         );
     };
 
-    ///////////////////////////////////////
-    ///////////////////////////////////////
-    ///////////////////////////////////////
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
 
     const renderBranchListForCity = () => {
         let branchList: DocumentData[] = [];
@@ -114,34 +131,38 @@ const BranchList = () => {
         if (selectedCountry === "USA") {
             const stateData = organizedBranches?.find((country) => country.country === "USA")
                 ?.states?.find((state) => state.state === selectedState);
-            branchList = stateData?.branches?.filter((branch) => branch.city === selectedCity) || [];
+            const cityData = stateData?.cities?.find(city => city.city === selectedCity);
+            branchList = cityData?.branches || [];
         } else {
             const countryData = organizedBranches?.find((country) => country.country === selectedCountry);
-            branchList = countryData?.branches?.filter((branch) => branch.city === selectedCity) || [];
+            const cityData = countryData?.cities?.find(city => city.city === selectedCity);
+            branchList = cityData?.branches || [];
         }
 
         return (
             <div>
-                <h3>Branches in {selectedCity}</h3>
+                <h3 className="text-2xl font-title font-bold">{selectedCity}, {selectedCountry}</h3>
                 {renderBranches(branchList)}
             </div>
         );
     };
 
     return (
-        <div className="max-w-max mx-auto py-8 px-4">
-            {/* Step 1: Show countries */}
-            {!selectedCountry && renderCountryList()}
+        <Suspense fallback={<div>Loading...</div>}>
+            <div className="w-full">
+                {/* Step 1: Show countries */}
+                {!selectedCountry && renderCountryList()}
 
-            {/* Step 2: Show states if USA is selected */}
-            {selectedCountry === "USA" && !selectedState && renderStateList()}
+                {/* Step 2: Show states if USA is selected */}
+                {selectedCountry === "USA" && !selectedState && renderStateList()}
 
-            {/* Step 3: Show cities for the selected country or state */}
-            {selectedCountry && !selectedCity && renderCityList()}
+                {/* Step 3: Show cities for the selected country or state */}
+                {selectedCountry && !selectedCity && renderCityList()}
 
-            {/* Step 4: Show branches in the selected city */}
-            {selectedCity && renderBranchListForCity()}
-        </div>
+                {/* Step 4: Show branches in the selected city */}
+                {selectedCity && renderBranchListForCity()}
+            </div>
+        </Suspense>
     );
 };
 
