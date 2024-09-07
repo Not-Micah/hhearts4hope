@@ -1,7 +1,7 @@
 export const navItems = [
     {label: "About", link: "/about"},
     {label: "Our Impact", link: "/impact"},
-    {label: "Donate", link: "https://www.paypal.com/donate/buttons"},
+    {label: "Donate", link: "/donate"},
     {label: "Get Involved", link: "/getinvolved"}
 ]
 

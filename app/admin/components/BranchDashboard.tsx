@@ -4,9 +4,6 @@ import { useBranchData } from "@/providers/useBranchData";
 import useBranchModal from "@/hooks/useBranchModal";
 import BranchItem from "./BranchItem";
 
-import { sortBranchesAlphabetically } from "@/utils/functions";
-
-
 const BranchDashboard = () => {
   const { branches } = useBranchData();
 
@@ -27,7 +24,7 @@ const BranchDashboard = () => {
     overflow-y-scroll no-scrollbar py-12">
       <h3 className="dynamic-subheading font-title font-semibold">Branches</h3>
       <div className="flex flex-col justify-center items-start gap-y-2">
-        {branches && sortBranchesAlphabetically(branches).map((item, index) => (
+        {branches && branches.map((item, index) => (
           <div
             key={index}
             className="flex flex-row justify-between items-center gap-x-4

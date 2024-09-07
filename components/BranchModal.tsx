@@ -24,6 +24,7 @@ const BranchModal = () => {
 
     useEffect(() => {
         setCountry(currentBranch?.country || "");
+        setState(currentBranch?.state || "");
         setCity(currentBranch?.city || "");
         setHighschool(currentBranch?.highschool || "");
         setDescription(currentBranch?.description || "");

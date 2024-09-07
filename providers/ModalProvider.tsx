@@ -6,6 +6,7 @@ import BranchModal from "@/components/BranchModal";
 import DeleteConfirmationModal from "@/components/DeleteConfirmationModal";
 import GalleryModal from "@/components/GalleryItemModal";
 import StatisticsModal from "@/components/StatisticsModal";
+import GalleryDisplayModal from "@/components/GalleryDisplayModal";
 
 const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -24,6 +25,7 @@ const ModalProvider = () => {
         <DeleteConfirmationModal />
         <GalleryModal />
         <StatisticsModal />
+        <GalleryDisplayModal />
     </>
   );
 };
