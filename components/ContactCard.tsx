@@ -20,7 +20,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ className }) => {
         p-8 rounded-lg shadow-xl bg-gray-100
         w-full max-sm:px-3
         `, className)}>
-            <h3 className="font-title font-semibold dynamic-subheading text-center">Questions?</h3>
+            <h3 className="dynamic-subheading font-semibold text-center">Questions?</h3>
             <div className="flex justify-between items-center gap-x-6 w-full
             max-lg:flex-col max-lg:gap-y-4">
                 <div className="w-full">

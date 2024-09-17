@@ -7,10 +7,12 @@
 @layer components {
   .dynamic-heading {
     @apply text-6xl max-lg:text-4xl
+    font-bold font-title
   }
 
   .dynamic-subheading {
     @apply text-5xl max-lg:text-3xl
+    font-bold font-title
   }
 
   .input-field {

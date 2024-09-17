@@ -5,7 +5,7 @@ const Services = () => {
   return (
     <div className='max-w-max mx-auto 
     py-48 px-8'>
-        <h3 className='font-title dynamic-subheading font-bold'>About Us</h3>
+        <h3 className='dynamic-subheading'>About Us</h3>
         <div className="flex justify-start items-center gap-x-20
         mt-10
         max-lg:flex-col">

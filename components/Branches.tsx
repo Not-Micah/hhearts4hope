@@ -27,7 +27,7 @@ const Branches = () => {
   return (
     <div className='w-[100vw] px-4 py-16 flex justify-center items-center bg-accent'>
       <div className="max-w-max w-full flex flex-col justify-center items-center gap-y-8">
-        <h3 className='dynamic-subheading font-bold font-title'>Branches</h3>
+        <h3 className='dynamic-subheading'>Branches</h3>
         <Marquee speed={25} gradient={false} className="w-full">
           {branches?.map((branch, index) => (
             <div key={index} className="p-4 mx-5 font-title text-xl bg-white rounded-lg shadow-lg">

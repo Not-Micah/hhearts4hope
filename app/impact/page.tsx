@@ -8,7 +8,7 @@ const Impact = () => {
       <NavBar transparent={false} />
       <div className="max-w-max mx-auto py-8 px-4
       flex flex-col justify-start items-start gap-y-4">
-        <h3 className="dynamic-subheading font-bold font-title">
+        <h3 className="dynamic-subheading">
           Branches
         </h3>
         <BranchList />

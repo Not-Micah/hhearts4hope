@@ -20,7 +20,7 @@ const StatisticsDashboard = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-y-6
     overflow-y-scroll no-scrollbar py-12">
-      <h3 className="dynamic-subheading font-title font-semibold">Statistics</h3>
+      <h3 className="dynamic-subheading font-semibold">Statistics</h3>
       <div className="flex flex-col justify-center items-start gap-y-2">
         {statistics && statistics.map((statistic, index) => (
           <button

@@ -6,7 +6,6 @@ const GetInvolved = () => {
   return (
     <div>
       <NavBar transparent={false} />
-      Form links... Information of what it means to join...
       <ApplicationInformation />
       <Footer />
     </div>

@@ -37,7 +37,7 @@ const Testimonials = () => {
         </path>
       </svg>
       <div className="max-w-max flex flex-col justify-center items-center gap-y-12 w-full">
-        <h3 className="font-title dynamic-subheading font-bold">Testimonials</h3>
+        <h3 className="dynamic-subheading">Testimonials</h3>
         <div className="grid grid-cols-2 gap-6 max-lg:flex max-lg:flex-col max-lg:gap-y-2">
           {displayedTestimonials.map((testimonial, index) => (
             <div

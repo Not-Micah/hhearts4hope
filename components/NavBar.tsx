@@ -1,27 +1,9 @@
 "use client";
 
-import { navItems } from "@/data";                      // Data
-import { RxHamburgerMenu } from "react-icons/rx";       // Icons
+import { navItems } from "@/data";                 
+import { RxHamburgerMenu } from "react-icons/rx";    
 import { IoIosClose } from "react-icons/io";
-import useNavModal from "@/hooks/useNavModal";          // Hook
-
-import { twMerge } from "tailwind-merge";
-
-interface ButtonProps {
-    className?: string;
-}
-
-const Button: React.FC<ButtonProps> = ({ className }) => {
-    return (
-        <a href="" className={
-        twMerge(`
-        bg-primary rounded-full
-        font-semibold text-white
-        px-4 py-2`, 
-        className)
-        }>Donate</a>
-    )
-}
+import useNavModal from "@/hooks/useNavModal";         
 
 const NavModal = () => {
   const {isOpen, onClose} = useNavModal();
@@ -46,7 +28,6 @@ const NavModal = () => {
                 {item.label}
             </a>
         ))}
-        <Button className="text-lg mt-10" />
     </div>
   )
 }
@@ -83,7 +64,6 @@ const NavBar: React.FC<NavBarProps> = ({ transparent }) => {
                     ${transparent && 'text-white'}`}
                     href={item.link} key={index}>{item.label}</a>
                 ))}
-                <Button />
             </div>
             <button className="
             hidden max-md:inline-block
