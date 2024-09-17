@@ -1,7 +1,7 @@
 "use client";
 
-import Modal from "./Modal";
-import InputField from "./InputField";
+import Modal from "../Modal";
+import InputField from "../InputField";
 
 import useStatisticsModal from "@/hooks/useStatisticsModal";
 import { editStatistic } from "@/utils/database";

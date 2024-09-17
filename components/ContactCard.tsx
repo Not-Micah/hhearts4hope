@@ -75,7 +75,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ className }) => {
                     style={{ minHeight: "80px", maxHeight: "400px" }}
                 />
             </div>
-            <button className="w-full bg-primary/80 rounded-full p-2
+            <button className="w-full secondary-button rounded-full p-2
             text-white text-3xl max-lg:text-xl font-title">
                 Submit
             </button>

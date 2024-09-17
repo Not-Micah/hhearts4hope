@@ -12,16 +12,20 @@ const config: Config = {
         primary: "#b80707",
         secondary: "#eb7388",
         accent: "#feeeee",
-        content: "#1a1a1e"
+        crystalrose: "#fdc4c4",
+        rubberradish: "#fb9999",
+        protonred: "#860505",
+        content: "#1a1a1e",
       },
       fontFamily: {
-        title: ['Nunito', 'sans-serif'], // Changed from Poppins to Nunito
+        title: ['Poppins', 'sans-serif'],
+        body: ['Nunito', 'sans-serif'], 
       },
       maxWidth: {
         'max': '1300px',
       },
     },
-  }
+  },
 };
 
 export default config;

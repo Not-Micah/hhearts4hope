@@ -14,7 +14,7 @@ const Services = () => {
                 {services.map((service, index) => (
                     <div key={index} className="flex flex-col justify-center items-start gap-y-2">
                         <div className="text-3xl bg-primary text-white
-                        p-2 rounded-xl mb-5">
+                        p-2 rounded-xl mb-5 drop-shadow-[0px_4px_0px_rgba(134,5,5,1)]">
                             {service.icon}
                         </div>
                         <h3 className="font-title text-2xl font-semibold">

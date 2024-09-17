@@ -1,7 +1,7 @@
 "use client";
 
-import Modal from "./Modal";
-import InputField from "./InputField";
+import Modal from "../Modal";
+import InputField from "../InputField";
 
 import useGalleryModal from "@/hooks/useGalleryModal";
 import { addGalleryItem, editGalleryItem } from "@/utils/database";

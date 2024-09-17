@@ -1,6 +1,6 @@
 "use client";
 
-import Modal from "./Modal";
+import Modal from "../Modal";
 import useDeleteConfirmationModal from "@/hooks/useDeleteConfirmationModal";
 import { deleteBranch } from "@/utils/database";
 

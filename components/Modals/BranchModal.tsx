@@ -1,7 +1,7 @@
 "use client";
 
-import Modal from "./Modal";
-import InputField from "./InputField";
+import Modal from "../Modal";
+import InputField from "../InputField";
 
 import useBranchModal from "@/hooks/useBranchModal";
 import { addBranch, editBranch } from "@/utils/database";

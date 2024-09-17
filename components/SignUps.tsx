@@ -17,7 +17,7 @@ const SignUps = () => {
           <div className="flex flex-col justify-center items-start gap-y-6">
             <h3 className="dynamic-subheading">{signUp.title}</h3>
             <p className="text-content/80">{signUp.description}</p>
-            <button className="bg-primary text-white 
+            <button className="primary-button
             px-8 py-2 rounded-full">{signUp.title}</button>
           </div>
         </div>

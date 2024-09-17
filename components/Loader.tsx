@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <div className="w-[100vw] h-[70vh]
     flex justify-center items-center">
-        <ClockLoader color="#73a0e1" size={60} />
+        <ClockLoader color="#b80707" size={60} />
     </div>
   )
 }

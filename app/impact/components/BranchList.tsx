@@ -1,20 +1,23 @@
 "use client";
 
-import { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from 'next/navigation';
 
+import { IoIosReturnLeft } from "react-icons/io";
+
 import { DocumentData } from "firebase/firestore";
-
 import BranchDisplay from "./BranchDisplay";
-
 import { CountryData, organizeBranchesByCountry } from "@/utils/functions";
-import { useBranchData } from "@/providers/useBranchData";
-import { twMerge } from "tailwind-merge";
 
-const cardStyles = `px-6 py-4 rounded-lg bg-gray-200`;
+interface BranchListProps {
+    branches: DocumentData[] | null;
+}
 
-const BranchList = () => {
-    const { branches } = useBranchData();
+const cardStyles = `
+    w-full p-4 text-left secondary-button 
+`
+
+const BranchList: React.FC<BranchListProps> = ({ branches }) => {
     const [organizedBranches, setOrganizedBranches] = useState<null | CountryData[]>(null);
 
     const router = useRouter();
@@ -33,6 +36,18 @@ const BranchList = () => {
     /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////
+
+    const handleReturnClick = () => {
+        const currentUrl = new URL(window.location.href);
+        const params = new URLSearchParams(currentUrl.search);
+        const keys = Array.from(params.keys());
+
+        if (keys.length > 0) {
+            params.delete(keys[keys.length - 1]); // Remove the last query parameter
+            const newUrl = `${currentUrl.pathname}?${params.toString()}`;
+            router.push(newUrl);
+        }
+    }
 
     const handleCountryClick = (country: string) => {
         router.push(`?country=${country}`);
@@ -63,7 +78,8 @@ const BranchList = () => {
     );
 
     const renderCountryList = () => (
-        <div className="flex justify-start items-center gap-x-4">
+        <div 
+        className="flex flex-col gap-y-2">
             {organizedBranches?.map((countryData, index) => (
                 <button
                     className={cardStyles}
@@ -80,7 +96,7 @@ const BranchList = () => {
         const usaData = organizedBranches?.find((country) => country.country === "USA");
 
         return (
-            <div className="flex justify-start items-center gap-x-4">
+            <div className="flex flex-col gap-y-2">
                 {usaData?.states?.map((stateData, index) => (
                     <button
                         className={cardStyles}
@@ -107,7 +123,7 @@ const BranchList = () => {
         }
 
         return (
-            <div className="flex justify-start items-center gap-x-4">
+            <div className="flex flex-col gap-y-2">
                 {cityList.map((city, index) => (
                     <button
                         className={cardStyles}
@@ -148,19 +164,34 @@ const BranchList = () => {
     };
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <div className="w-full">
-                {/* Step 1: Show countries */}
-                {!selectedCountry && renderCountryList()}
+        <Suspense 
+        fallback={<div>Loading...</div>}>
+            <div className="max-w-max w-full mx-auto
+            px-4 py-8
+            flex flex-col gap-y-4">
+                <h3 className="dynamic-subheading">Branches</h3>
+                <div className="inline-block">
+                    <button
+                        className="flex justify-start items-center gap-x-2 py-1 p-2 
+                                primary-button"
+                        onClick={handleReturnClick}
+                    >
+                        <IoIosReturnLeft /> Return
+                    </button>
+                </div>
+                <div className="w-full">
+                    {/* Step 1: Show countries */}
+                    {!selectedCountry && renderCountryList()}
 
-                {/* Step 2: Show states if USA is selected */}
-                {selectedCountry === "USA" && !selectedState && renderStateList()}
+                    {/* Step 2: Show states if USA is selected */}
+                    {selectedCountry === "USA" && !selectedState && renderStateList()}
 
-                {/* Step 3: Show cities for the selected country or state */}
-                {selectedCountry && !selectedCity && renderCityList()}
+                    {/* Step 3: Show cities for the selected country or state */}
+                    {selectedCountry && !selectedCity && renderCityList()}
 
-                {/* Step 4: Show branches in the selected city */}
-                {selectedCity && renderBranchListForCity()}
+                    {/* Step 4: Show branches in the selected city */}
+                    {selectedCity && renderBranchListForCity()}
+                </div>
             </div>
         </Suspense>
     );
