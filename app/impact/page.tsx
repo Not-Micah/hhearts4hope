@@ -21,7 +21,7 @@ const Impact = () => {
             <div className="">
               <BranchList branches={branches} />
               <div className="max-w-max w-full mx-auto h-[500px]
-              px-4 py-8">
+              px-4 py-8 mb-8">
                 <BranchMap branches={branches}/>
               </div>
             </div>

@@ -16,7 +16,7 @@ const Hero = () => {
             flex flex-col justify-center items-start gap-y-12
             max-lg:gap-y-6
             px-4 py-6
-            ">
+            "> 
                 <h3 className='dynamic-heading text-white'>
                   Hearts For Hope
                 </h3>

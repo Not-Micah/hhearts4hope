@@ -3,7 +3,7 @@ import { contacts, socials } from "@/data"
 const Footer = () => {
   return (
     <footer className='
-        w-[100vw] py-12 px-8 bg-black/40
+        w-[100vw] py-12 px-8 bg-gray-100
         flex justify-center items-center
     '>
         <div className="flex flex-col gap-y-2">
@@ -13,7 +13,7 @@ const Footer = () => {
                 max-lg:flex-col max-lg:gap-y-11
             ">
                 <div className="flex flex-col justify-center items-start gap-y-7">
-                    <img src="/logo.png" className='w-[100px] opacity-30' />
+                    <img src="/logo.png" className='w-[100px]' />
                     <p className="text-content/80 text-sm">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi doloribus perspiciatis soluta nemo blanditiis nulla atque porro ut nihil harum voluptates quo, cupiditate cum, debitis rerum? Eaque, cupiditate eum ad nulla tenetur corporis! Id, perspiciatis.
                     </p>

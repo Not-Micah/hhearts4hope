@@ -69,14 +69,6 @@ const BranchList: React.FC<BranchListProps> = ({ branches }) => {
     /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////
 
-    const renderBranches = (branches: DocumentData[]) => (
-        <div>
-            {branches.map((branch, index) => (
-                <BranchDisplay key={index} branch={branch} />
-            ))}
-        </div>
-    );
-
     const renderCountryList = () => (
         <div 
         className="flex flex-col gap-y-2">
@@ -156,9 +148,13 @@ const BranchList: React.FC<BranchListProps> = ({ branches }) => {
         }
 
         return (
-            <div>
-                <h3 className="text-2xl font-title font-bold">{selectedCity}, {selectedCountry}</h3>
-                {renderBranches(branchList)}
+            <div className="flex flex-col gap-y-12">
+                <h3 className="text-4xl font-title font-bold">{selectedCity}, {selectedCountry}</h3>
+                <div className="flex flex-col gap-y-20">
+                    {branchList.map((branch, index) => (
+                        <BranchDisplay key={index} branch={branch} />
+                    ))}
+                </div>
             </div>
         );
     };
@@ -172,7 +168,7 @@ const BranchList: React.FC<BranchListProps> = ({ branches }) => {
                 <h3 className="dynamic-subheading">Branches</h3>
                 <div className="inline-block">
                     <button
-                        className="flex justify-start items-center gap-x-2 py-1 p-2 
+                        className="flex justify-start items-center gap-x-2 py-1 p-2 mt-8 
                                 primary-button"
                         onClick={handleReturnClick}
                     >
