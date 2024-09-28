@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { getGallery } from "@/utils/database";
 import { useBranchData } from "@/providers/useBranchData";
+import useGalleryDisplayModal from "@/hooks/useGalleryDisplayModal";
 
 import Loader from "@/components/Loader";
 import NavBar from "@/components/NavBar";
@@ -15,9 +16,14 @@ const Branch = () => {
   const country = searchParams.get("country");
   const city = searchParams.get("city");
 
+  const {
+    onOpen,
+    setGalleryItem
+    } = useGalleryDisplayModal();
+
   const { branches } = useBranchData();
-  const [branchDataList, setBranchDataList] = useState<any[]>([]); // List of branches for same city & country
-  const [galleryItems, setGalleryItems] = useState<Record<string, any[]>>({}); // Store gallery items per branch
+  const [branchDataList, setBranchDataList] = useState<any[]>([]); 
+  const [galleryItems, setGalleryItems] = useState<Record<string, any[]>>({}); 
 
   // Fetch all branches matching the country and city
   useEffect(() => {
@@ -51,47 +57,45 @@ const Branch = () => {
   return (
     <div className="">
         <NavBar transparent={false} />
-        <div className="px-4 py-20 mt-20 max-w-max w-full mx-auto flex flex-col gap-y-20">
-            {branchDataList.map((branch) => (
-                <div
-                key={`${branch.city}-${branch.highschool}`}
-                className="flex gap-x-20 max-lg:flex-col max-lg:items-center"
-                >
-                <img
-                    src={branch?.photo}
-                    className="w-[500px] h-[500px] object-cover drop-shadow max-[500px]:w-full max-[500px]:h-auto"
-                />
-                <div className="flex flex-col gap-y-6 max-lg:max-w-[500px] max-lg:w-full max-lg:mt-8">
-                    <div>
-                    <h3 className="text-header/80 font-bold uppercase font-title dynamic-text">
-                        About {branch.city}, {branch.state} {branch.country}
-                    </h3>
-                    <h3 className="text-3xl font-bold font-title uppercase text-header">
-                        {branch.firstName} {branch.lastName}
-                    </h3>
-                    <p className="dynamic-text text-body">{branch.description}</p>
-                    </div>
-
-                    {/* Display Gallery Items for the branch */}
-                    <div className="mt-4">
-                    <h4 className="text-xl font-bold">Gallery</h4>
-                    <div className="grid grid-cols-1 gap-4 max-md:grid-cols-2 max-lg:grid-cols-3">
-                        {(galleryItems[`${branch.city}-${branch.highschool}`] || []).map(
-                        (galleryItem, index) => (
-                            <div
-                            key={index}
-                            className="p-4 border rounded shadow-sm hover:shadow-lg"
-                            >
-                            <h5 className="font-bold">{galleryItem.title}</h5>
-                            <p>{galleryItem.description}</p>
+        <div className="px-4 max-w-max w-full mx-auto flex flex-col gap-y-36 my-16">
+            {
+                branchDataList.map((branch, index) => (
+                  <div 
+                  key={index}
+                  className="flex flex-col gap-y-8">
+                    <div className="flex gap-x-20
+                    max-lg:flex-col max-lg:gap-y-8">
+                        <img src={branch?.photo} className="w-[400px] h-[400px] object-cover
+                        max-lg:w-full max-lg:h-auto" />
+                        <div className="flex flex-col gap-y-4 h-[400px] overflow-y-scroll no-scrollbar
+                        max-lg:h-full" >
+                            <div className="">
+                                <p className="dynamic-text mb-1">{branch.highschool}</p>
+                                <h3 className="dynamic-subheading">{branch.firstName} {branch.lastName}</h3>
                             </div>
-                        )
-                        )}
+                            <p className="dynamic-text">
+                                {branch.description}
+                            </p>
+                        </div>
                     </div>
+                    <div className="flex flex-col gap-y-4">
+                            {
+                                (galleryItems[`${branch.city}-${branch.highschool}`] || []).map((galleryItem, index) => (
+                                    <button 
+                                    key={index}
+                                    onClick={() => {
+                                        setGalleryItem(galleryItem);
+                                        onOpen();
+                                    }}
+                                    className="p-4 border rounded">
+                                        <h3 className="dynamic-text text-left text-nowrap overflow-hidden">{galleryItem.title}, {galleryItem.description}</h3>
+                                    </button>
+                                ))
+                            }
                     </div>
                 </div>
-                </div>
-            ))}
+                ))
+            }
         </div>
         <Footer />
     </div>
