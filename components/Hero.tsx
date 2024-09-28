@@ -10,12 +10,12 @@ const Hero = () => {
         <img src="/hero.jpg" className='absolute opacity-15 -z-10
         w-full h-full object-cover blur-[2px]' />
         <div className="
-        max-w-max w-full justify-start items-center max-lg:px-4
+        max-w-max w-full justify-start items-center px-x
         mt-20">
             <div className="max-w-[800px] w-full
             flex flex-col justify-center items-start gap-y-12
             max-lg:gap-y-6
-            px-4 py-6
+            py-6
             "> 
                 <h3 className='dynamic-heading text-white'>
                   Hearts For Hope

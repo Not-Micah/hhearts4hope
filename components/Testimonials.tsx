@@ -28,7 +28,7 @@ const Testimonials = () => {
   const displayedTestimonials = testimonials.slice(startIndex, startIndex + 4);
 
   return (
-    <div className="bg-accent w-[100vw] flex justify-center items-center px-4 py-36 
+    <div className="bg-accent w-[100vw] flex justify-center items-center px-x py-36 
     relative overflow-hidden">
       <div className="w-[1200px] h-[1200px] bg-protonred rounded-full blur-[300px] opacity-25
       absolute -left-[500px]"></div>
@@ -50,7 +50,7 @@ const Testimonials = () => {
                   <p className="text-gray-800">SEO of Apple</p>
                 </div>
               </div>
-              <p className="text-content dynamic-text">{testimonial.quote}</p>
+              <p className="dynamic-text">{testimonial.quote}</p>
             </div>
           ))}
         </div>

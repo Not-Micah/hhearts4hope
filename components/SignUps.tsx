@@ -2,7 +2,7 @@ import { signUps } from "@/data";
 
 const SignUps = () => {
   return (
-    <div className='max-w-max mx-auto py-48 px-8
+    <div className='max-w-max mx-auto py-48 px-x
     flex flex-col justify-center items-between gap-y-40
     max-lg:gap-y-28'>
       {signUps.map((signUp, index) => (
@@ -16,7 +16,7 @@ const SignUps = () => {
           max-lg:h-auto max-lg:mb-14" />
           <div className="flex flex-col justify-center items-start gap-y-6">
             <h3 className="dynamic-subheading">{signUp.title}</h3>
-            <p className="text-content/80">{signUp.description}</p>
+            <p className="dynamic-text mb-4">{signUp.description}</p>
             <button className="primary-button
             px-8 py-2 rounded-full">{signUp.title}</button>
           </div>

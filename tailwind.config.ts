@@ -15,7 +15,8 @@ const config: Config = {
         crystalrose: "#fdc4c4",
         rubberradish: "#fb9999",
         protonred: "#860505",
-        content: "#1a1a1e",
+        header: "#2C2C2C",
+        body: "#4F4F4F",
       },
       fontFamily: {
         title: ['Poppins', 'sans-serif'],

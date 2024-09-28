@@ -10,7 +10,7 @@ const Branches = () => {
   const { branches } = useBranchData();
 
   return (
-    <div className='w-[100vw] px-4 py-16 flex justify-center items-center bg-accent
+    <div className='w-[100vw] px-x py-16 flex justify-center items-center bg-accent
     relative overflow-hidden'>
       <div className="max-w-max w-full flex flex-col justify-center items-center gap-y-8
       z-20">
@@ -47,7 +47,7 @@ const Branches = () => {
         x="0px"
         y="0px"
         viewBox="0 0 1 1.00232"
-        enable-background="new 0 0 1 1.00232"
+        enableBackground="new 0 0 1 1.00232"
       >
         <path
           fill="#eb7388"

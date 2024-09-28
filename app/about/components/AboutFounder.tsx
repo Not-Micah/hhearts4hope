@@ -47,7 +47,7 @@ const AboutFounder = () => {
         x="0px"
         y="0px"
         viewBox="0 0 1 1.00232"
-        enable-background="new 0 0 1 1.00232"
+        enableBackground="new 0 0 1 1.00232"
       >
         <path
           fill="#eb7388"

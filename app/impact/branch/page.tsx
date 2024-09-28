@@ -57,7 +57,7 @@ const Branch = () => {
   return (
     <div className="">
         <NavBar transparent={false} />
-        <div className="px-4 max-w-max w-full mx-auto flex flex-col gap-y-36 my-16">
+        <div className="px-x max-w-max w-full mx-auto flex flex-col gap-y-36 my-16">
             {
                 branchDataList.map((branch, index) => (
                   <div 
@@ -65,7 +65,7 @@ const Branch = () => {
                   className="flex flex-col gap-y-8">
                     <div className="flex gap-x-20
                     max-lg:flex-col max-lg:gap-y-8">
-                        <img src={branch?.photo} className="w-[400px] h-[400px] object-cover
+                        <img src={branch?.photo} className="w-[400px] h-[400px] object-cover rounded-md
                         max-lg:w-full max-lg:h-auto" />
                         <div className="flex flex-col gap-y-4 h-[400px] overflow-y-scroll no-scrollbar
                         max-lg:h-full" >
@@ -87,7 +87,7 @@ const Branch = () => {
                                         setGalleryItem(galleryItem);
                                         onOpen();
                                     }}
-                                    className="p-4 border rounded">
+                                    className="p-4 border rounded shadow-sm">
                                         <h3 className="dynamic-text text-left text-nowrap overflow-hidden">{galleryItem.title}, {galleryItem.description}</h3>
                                     </button>
                                 ))

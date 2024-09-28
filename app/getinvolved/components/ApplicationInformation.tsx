@@ -5,7 +5,7 @@ import { signUps } from "@/data";
 
 const ApplicationInformation = () => {
   return (
-    <div className="relative max-w-max w-full mx-auto px-4 pt-14 pb-40">
+    <div className="relative max-w-max w-full mx-auto px-x pt-14 pb-40">
       <GradientBackground />
       <div className="relative max-w-max w-full flex flex-col justify-start items-start gap-y-12">
         <div className="flex flex-col gap-y-2">

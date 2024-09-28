@@ -4,7 +4,7 @@ import ContactCard from "./ContactCard"
 const Services = () => {
   return (
     <div className='max-w-max mx-auto 
-    py-48 px-8'>
+    py-48 px-x'>
         <h3 className='dynamic-subheading'>About Us</h3>
         <div className="flex justify-start items-center gap-x-20
         mt-10
@@ -17,10 +17,10 @@ const Services = () => {
                         p-2 rounded-xl mb-5 drop-shadow-[0px_4px_0px_rgba(134,5,5,1)]">
                             {service.icon}
                         </div>
-                        <h3 className="font-title text-2xl font-semibold">
+                        <h3 className="font-title dynamic-text text-header font-semibold">
                             {service.title}
                         </h3>
-                        <p className="text-content/80">
+                        <p className="dynamic-text">
                             {service.description}
                         </p>
                     </div>
