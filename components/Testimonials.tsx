@@ -30,8 +30,8 @@ const Testimonials = () => {
   return (
     <div className="bg-accent w-[100vw] flex justify-center items-center px-4 py-36 
     relative overflow-hidden">
-      <div className="w-[600px] h-[600px] bg-protonred rounded-full blur-[300px]
-      absolute -left-[35px]"></div>
+      <div className="w-[1200px] h-[1200px] bg-protonred rounded-full blur-[300px] opacity-25
+      absolute -left-[500px]"></div>
       <div className="max-w-max flex flex-col justify-center items-center gap-y-12 w-full">
         <h3 className="dynamic-subheading">Testimonials</h3>
         <div className="grid grid-cols-2 gap-6 max-lg:flex max-lg:flex-col max-lg:gap-y-2">

@@ -1,196 +1,110 @@
 "use client";
 
-import React, { useEffect, useState, Suspense } from "react";
-import { useRouter, useSearchParams } from 'next/navigation';
-
-import { IoIosReturnLeft } from "react-icons/io";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { twMerge } from "tailwind-merge";
 
 import { DocumentData } from "firebase/firestore";
-import BranchDisplay from "./BranchDisplay";
-import { CountryData, organizeBranchesByCountry } from "@/utils/functions";
+import { organizeBranchesByCountry, CountryData } from "@/utils/functions";
 
 interface BranchListProps {
-    branches: DocumentData[] | null;
+  branches: DocumentData[] | null;
 }
 
-const cardStyles = `
-    w-full p-4 text-left secondary-button 
-`
-
 const BranchList: React.FC<BranchListProps> = ({ branches }) => {
-    const [organizedBranches, setOrganizedBranches] = useState<null | CountryData[]>(null);
+  const [organizedBranches, setOrganizedBranches] = useState<null | CountryData[]>(null);
+  const router = useRouter();
 
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    
-    const selectedCountry = searchParams.get("country");
-    const selectedState = searchParams.get("state");
-    const selectedCity = searchParams.get("city");
-
-    useEffect(() => {
-        if (branches) {
-            setOrganizedBranches(organizeBranchesByCountry(branches));
-        }
-    }, [branches]);
-
-    /////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////
-
-    const handleReturnClick = () => {
-        const currentUrl = new URL(window.location.href);
-        const params = new URLSearchParams(currentUrl.search);
-        const keys = Array.from(params.keys());
-
-        if (keys.length > 0) {
-            params.delete(keys[keys.length - 1]); // Remove the last query parameter
-            const newUrl = `${currentUrl.pathname}?${params.toString()}`;
-            router.push(newUrl);
-        }
+  useEffect(() => {
+    if (branches) {
+      setOrganizedBranches(organizeBranchesByCountry(branches));
     }
+  }, [branches]);
 
-    const handleCountryClick = (country: string) => {
-        router.push(`?country=${country}`);
-    };
+  const handleBranchClick = (country: string, city: string) => {
+    router.push(`/impact/branch?country=${country}&city=${city}`);
+  };
 
-    const handleStateClick = (state: string) => {
-        if (selectedCountry) {
-            router.push(`?country=${selectedCountry}&state=${state}`);
-        }
-    };
+  // Render section for non-USA countries
+  const renderCountrySection = (countryData: CountryData) => (
+    <div key={countryData.country} className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-1">
+        <h3 className="text-2xl font-bold font-title text-header uppercase">{countryData.country}</h3>
+        <div className="w-full h-[2px] rounded-full bg-primary" />
+      </div>
+      <div className="grid grid-cols-2 gap-8 w-[600px] max-[590px]:flex max-[590px]:flex-col max-[590px]:gap-y-4">
+        {countryData.cities?.map((city, index) => (
+          <button
+            key={index}
+            onClick={() => handleBranchClick(countryData.country, city.city)}
+            className={twMerge("dynamic-text text-body text-left z-10 text-wrap max-w-[200px]")}
+          >
+            {city.city}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 
-    const handleCityClick = (city: string) => {
-        if (selectedCountry && (selectedState || selectedCountry !== "USA")) {
-            router.push(`?country=${selectedCountry}&state=${selectedState || ""}&city=${city}`);
-        }
-    };
+  // Render section for the USA (states and cities)
+  const renderUSSection = () => {
+    const usaData = organizedBranches?.find((country) => country.country === "USA");
 
-    /////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////
+    if (usaData?.states) {
+      const midpoint = Math.ceil(usaData.states.length / 2);
+      const firstHalf = usaData.states.slice(0, midpoint);
+      const secondHalf = usaData.states.slice(midpoint);
 
-    const renderCountryList = () => (
-        <div 
-        className="flex flex-col gap-y-2">
-            {organizedBranches?.map((countryData, index) => (
+      const renderStateColumn = (states: DocumentData[]) => (
+        <div className="flex flex-col gap-y-8">
+          {states.map((stateData, index) => (
+            <div key={index} className="flex flex-col gap-y-4 w-[300px]">
+              <h4 className="dynamic-text font-bold">{stateData.state}</h4>
+              {stateData.cities.map((city: DocumentData, branchIndex: number) => (
                 <button
-                    className={cardStyles}
-                    key={index}
-                    onClick={() => handleCountryClick(countryData.country)}
+                  key={branchIndex}
+                  onClick={() => handleBranchClick("USA", city.city)}
+                  className="dynamic-text text-body text-left z-10 text-wrap"
                 >
-                    {countryData.country}
+                  {city.city}
                 </button>
-            ))}
+              ))}
+            </div>
+          ))}
         </div>
-    );
+      );
 
-    const renderStateList = () => {
-        const usaData = organizedBranches?.find((country) => country.country === "USA");
+      return (
+        <div key="USA" className="flex flex-col gap-y-4">
+          <div className="flex flex-col gap-y-1">
+            <h3 className="text-2xl font-bold font-title text-header uppercase">USA</h3>
+            <div className="w-full h-[2px] rounded-full bg-primary" />
+          </div>
+          <div className="flex flex-row gap-x-4 max-[590px]:flex-col max-[590px]:gap-y-8">
+            {renderStateColumn(firstHalf)}
+            {renderStateColumn(secondHalf)}
+          </div>
+        </div>
+      );
+    }
+  };
 
-        return (
-            <div className="flex flex-col gap-y-2">
-                {usaData?.states?.map((stateData, index) => (
-                    <button
-                        className={cardStyles}
-                        key={index}
-                        onClick={() => handleStateClick(stateData.state)}
-                    >
-                        {stateData.state}
-                    </button>
-                ))}
-            </div>
-        );
-    };
-
-    const renderCityList = () => {
-        let cityList: string[] = [];
-
-        if (selectedCountry === "USA") {
-            const stateData = organizedBranches?.find((country) => country.country === "USA")
-                ?.states?.find((state) => state.state === selectedState);
-            cityList = stateData?.cities?.map(city => city.city) || [];
-        } else {
-            const countryData = organizedBranches?.find((country) => country.country === selectedCountry);
-            cityList = countryData?.cities?.map(city => city.city) || [];
-        }
-
-        return (
-            <div className="flex flex-col gap-y-2">
-                {cityList.map((city, index) => (
-                    <button
-                        className={cardStyles}
-                        key={index}
-                        onClick={() => handleCityClick(city)}
-                    >
-                        {city}
-                    </button>
-                ))}
-            </div>
-        );
-    };
-
-    /////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////
-
-    const renderBranchListForCity = () => {
-        let branchList: DocumentData[] = [];
-
-        if (selectedCountry === "USA") {
-            const stateData = organizedBranches?.find((country) => country.country === "USA")
-                ?.states?.find((state) => state.state === selectedState);
-            const cityData = stateData?.cities?.find(city => city.city === selectedCity);
-            branchList = cityData?.branches || [];
-        } else {
-            const countryData = organizedBranches?.find((country) => country.country === selectedCountry);
-            const cityData = countryData?.cities?.find(city => city.city === selectedCity);
-            branchList = cityData?.branches || [];
-        }
-
-        return (
-            <div className="flex flex-col gap-y-12">
-                <h3 className="text-4xl font-title font-bold">{selectedCity}, {selectedCountry}</h3>
-                <div className="flex flex-col gap-y-20">
-                    {branchList.map((branch, index) => (
-                        <BranchDisplay key={index} branch={branch} />
-                    ))}
-                </div>
-            </div>
-        );
-    };
-
-    return (
-        <Suspense 
-        fallback={<div>Loading...</div>}>
-            <div className="max-w-max w-full mx-auto
-            px-4 py-8
-            flex flex-col gap-y-4">
-                <h3 className="dynamic-subheading">Branches</h3>
-                <div className="inline-block">
-                    <button
-                        className="flex justify-start items-center gap-x-2 py-1 p-2 mt-8 
-                                primary-button"
-                        onClick={handleReturnClick}
-                    >
-                        <IoIosReturnLeft /> Return
-                    </button>
-                </div>
-                <div className="w-full">
-                    {/* Step 1: Show countries */}
-                    {!selectedCountry && renderCountryList()}
-
-                    {/* Step 2: Show states if USA is selected */}
-                    {selectedCountry === "USA" && !selectedState && renderStateList()}
-
-                    {/* Step 3: Show cities for the selected country or state */}
-                    {selectedCountry && !selectedCity && renderCityList()}
-
-                    {/* Step 4: Show branches in the selected city */}
-                    {selectedCity && renderBranchListForCity()}
-                </div>
-            </div>
-        </Suspense>
-    );
+  return (
+    <div 
+    className="flex justify-center items-center mb-12"
+    style={{
+        background: `
+            linear-gradient(to top, #feeeee, #fffafa)`
+    }}>
+        <div className="max-w-max w-full px-4 py-24">
+        <h3 className="dynamic-subheading font-title text-header font-bold mb-16">Our Branches</h3>
+        <div className="max-w-[1000px] w-full flex flex-col gap-y-14">
+            {organizedBranches && renderUSSection()}
+            {organizedBranches?.filter((country) => country.country !== "USA").map(renderCountrySection)}
+        </div>
+        </div>
+    </div>
+  );
 };
 
 export default BranchList;

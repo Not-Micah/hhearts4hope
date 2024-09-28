@@ -24,7 +24,9 @@ export default function RootLayout({
         <BranchContextProvider>
             <ModalProvider />
             <ToasterProvider />
-            {children}
+            <div className="overflow-x-hidden">
+              {children}
+            </div>
         </BranchContextProvider>
       </body>
     </html>

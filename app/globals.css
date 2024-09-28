@@ -15,20 +15,24 @@
     font-bold font-title;
   }
 
+  .dynamic-text {
+    @apply text-xl max-lg:text-lg
+  }
+
   .input-field {
     @apply border-[1px] border-gray-300 rounded-md p-1 outline-none font-title w-full;
   }
 
   .primary-button {
     @apply bg-primary hover:bg-protonred transition-all duration-150
-    rounded-lg 
+    rounded-md
     font-bold 
     text-white drop-shadow-[0px_4px_0px_rgba(134,5,5,1)];
   }
 
   .secondary-button {
     @apply bg-crystalrose hover:bg-rubberradish transition-all duration-150
-    rounded-lg 
+    rounded-md
     drop-shadow-[0px_4px_0px_rgba(251,153,153,1)]
     text-lg first:uppercase font-bold text-black/80;
   } 
