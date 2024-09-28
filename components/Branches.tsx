@@ -39,7 +39,8 @@ const Branches = () => {
       </div>
       <svg
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-        z-10 w-[100vw] opacity-30"
+        z-10 w-[100vw] opacity-20
+        max-lg:hidden"
         version="1.1"
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +50,7 @@ const Branches = () => {
         enable-background="new 0 0 1 1.00232"
       >
         <path
-          fill="#000000"
+          fill="#eb7388"
           d="M0.60131,0.95254c-0.00411,0-0.00828-0.00104-0.01211-0.00322
 	C0.545,0.92414,0.51456,0.88595,0.50348,0.84179c-0.0068-0.02711-0.00632-0.0545,0.00137-0.07921
 	c0.00704-0.02259,0.0214-0.04366,0.04044-0.05934c0.04008-0.033,0.08902-0.0382,0.13161-0.03893

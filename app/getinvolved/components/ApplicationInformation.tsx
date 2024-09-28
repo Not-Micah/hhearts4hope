@@ -14,7 +14,8 @@ const ApplicationInformation = () => {
           </div>
           <h3 className="dynamic-subheading">Get Involved</h3>
         </div>
-        <div className="grid grid-cols-3 gap-8 z-10">
+        <div className="grid grid-cols-3 gap-8 z-10
+        max-[1300px]:flex max-[1300px]:flex-col max-[1300px]:gap-y-8">
           {signUps.map((signUp, index) => (
             <div
               key={index}
@@ -24,10 +25,10 @@ const ApplicationInformation = () => {
               <div className="text-7xl text-primary/60 bg-[#fdc4c4] drop-shadow-[0px_4px_0px_rgba(251,153,153,1)] mb-6 p-4 rounded-lg">
                 {signUp.icon}
               </div>
-              <h3 className="text-2xl font-title font-semibold">
+              <h3 className="dynamic-text font-title font-semibold">
                 {signUp.title}
               </h3>
-              <p className="text-lg text-black/50">{signUp.description}</p>
+              <p className="dynamic-text text-black/50">{signUp.description}</p>
               <div className="flex flex-wrap justify-start items-center gap-x-4">
                 {signUp.formLinks.map((link, index) => (
                   <a

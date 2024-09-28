@@ -39,7 +39,8 @@ const Testimonials = () => {
             <div 
             key={index}
             className="bg-white rounded-lg p-6 drop-shadow h-[300px]
-            flex flex-col gap-y-4">
+            flex flex-col gap-y-4
+            overflow-hidden overflow-y-scroll no-scrollbar">
               <div className="flex justify-start items-center gap-x-4">
                 <div className="bg-black/10 rounded-full text-white p-4">
                   <ImQuotesLeft size={30} />
@@ -49,7 +50,7 @@ const Testimonials = () => {
                   <p className="text-gray-800">SEO of Apple</p>
                 </div>
               </div>
-              <p className="text-content text-lg">{testimonial.quote}</p>
+              <p className="text-content dynamic-text">{testimonial.quote}</p>
             </div>
           ))}
         </div>

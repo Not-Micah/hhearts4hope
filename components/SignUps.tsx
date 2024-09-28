@@ -13,7 +13,7 @@ const SignUps = () => {
         >
           <img src={signUp.img} className="w-full h-[300px] object-cover 
           rounded-xl shadow-md
-          max-lg:h-[400px] max-lg:mb-14" />
+          max-lg:h-auto max-lg:mb-14" />
           <div className="flex flex-col justify-center items-start gap-y-6">
             <h3 className="dynamic-subheading">{signUp.title}</h3>
             <p className="text-content/80">{signUp.description}</p>

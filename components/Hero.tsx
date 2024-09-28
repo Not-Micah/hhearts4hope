@@ -20,8 +20,7 @@ const Hero = () => {
                 <h3 className='dynamic-heading text-white'>
                   Hearts For Hope
                 </h3>
-                <p className='text-lg text-white
-                max-md:text-base max-sm:text-sm'>
+                <p className='dynamic-text text-white'>
                   The Hearts for Hope Movement is a youth-lead nonprofit organization working towards raising awareness about heart disease and supporting those affected. Through promoting heart health education, 
                   CPR/AED certification, healthy lifestyle choices, and preventative measures, we aim to empower people to lead healthier lives and reduce the impact of heart disease all around the world.
                 </p>
