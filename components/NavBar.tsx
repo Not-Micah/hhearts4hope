@@ -11,8 +11,9 @@ const NavModal = () => {
   return (
     <div className={`
     w-[200px] h-[100vh]
+    z-[1000]
     fixed top-0 right-0
-    bg-gray-300/50 backdrop-blur-[2px]
+    bg-white/80 backdrop-blur-[2px]
     flex flex-col justify-start items-end gap-y-3
     p-8
     ${!isOpen && "hidden"}

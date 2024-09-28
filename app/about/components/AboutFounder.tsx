@@ -2,20 +2,25 @@ const AboutFounder = () => {
   return (
     <div
       className="w-[100vw] bg-accent
-    flex justify-center items-center px-4 
+    flex justify-center items-center 
     relative overflow-hidden"
     >
       <div
         className="max-w-max w-full
-      flex justify-between items-center gap-x-24"
+      flex justify-between items-center gap-x-24
+      max-[1400px]:gap-x-8
+      max-[1131px]:flex-col max-[1131px]:gap-y-8"
       >
         <img
           src="/splash_one.jpg"
-          className="max-w-[500px] h-[700px] object-cover z-20"
+          className="max-w-[500px] h-[700px] object-cover z-20
+          max-[1131px]:max-w-none max-[1131px]:w-full max-[1131px]:h-auto"
         />
-        <div className="flex flex-col justify-start items-start gap-y-2 z-20">
+        <div className="flex flex-col justify-center items-start gap-y-2 z-20 px-x
+        h-[700px] overflow-y-scroll no-scrollbar
+        max-[1131px]:h-full max-[1131px]:mt-8 max-[1131px]:pb-12">
           <h3 className="dynamic-subheading">About the Founder</h3>
-          <p className="text-lg">
+          <p className="dynamic-text">
             Naya Hamadeh is a highschooler from Dearborn, Michigan who is
             passionate about the medical field and wants to make a difference.
             Heart disease has always been a subject that affected her and her
@@ -34,7 +39,8 @@ const AboutFounder = () => {
       </div>
       <svg
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-        w-[1200px] h-[1000px] z-10 opacity-60"
+        w-[1200px] h-[1000px] z-10 opacity-20
+        max-[1131px]:hidden"
         version="1.1"
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"
