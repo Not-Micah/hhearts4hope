@@ -2,6 +2,7 @@ import NavBar from "@/components/NavBar"
 import Hero from "@/components/Hero"
 import Pin from "@/components/Pin"
 import Services from "@/components/Services"
+
 import SignUps from "@/components/SignUps"
 import Branches from "@/components/Branches"
 import Testimonials from "@/components/Testimonials"

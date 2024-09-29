@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { getGallery } from "@/utils/database";
 import { useBranchData } from "@/providers/useBranchData";
@@ -10,7 +10,7 @@ import Loader from "@/components/Loader";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
-const Branch = () => {
+const BranchContent = () => {
   const searchParams = useSearchParams();
   
   const country = searchParams.get("country");
@@ -101,5 +101,13 @@ const Branch = () => {
     </div>
   );
 };
+
+const Branch = () => {
+  return (
+    <Suspense fallback={<Loader />}>
+      <BranchContent />
+    </Suspense>
+  )
+}
 
 export default Branch;
