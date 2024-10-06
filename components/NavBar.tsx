@@ -21,6 +21,9 @@ const NavModal = () => {
         <button className="mb-8" onClick={onClose}>
             <IoIosClose size={35} />
         </button>
+        <a href="/" className="mb-8">
+            <img src="/logo.png" className="w-[40px] h-[40px] object-cover" />
+        </a>
         {navItems.map((item, index) => (
             <a key={index} href={item.link}
             className="
