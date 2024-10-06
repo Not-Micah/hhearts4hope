@@ -3,11 +3,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { DocumentData } from "firebase/firestore";
 
-import { getBranches, getStatistics } from "@/utils/database";
+import { getBranches, getStatistics, getPartners } from "@/utils/database";
 
 type BranchContextType = {
     branches: DocumentData[] | null;
     statistics: DocumentData[] | null;
+    partners: DocumentData[] | null;
 };
 
 export const BranchContext = createContext<BranchContextType | undefined>(
@@ -21,6 +22,7 @@ export interface Props {
 export const BranchContextProvider = (props: Props) => {
     const [branches, setBranches] = useState<DocumentData[] | null>(null);
     const [statistics, setStatistics] = useState<DocumentData[] | null>(null);
+    const [partners, setPartners] = useState<DocumentData[] | null>(null);
 
     useEffect(() => {
         const unsubscribe = getBranches(setBranches);
@@ -32,9 +34,15 @@ export const BranchContextProvider = (props: Props) => {
         return () => unsubscribe();
     }, []);
 
+    useEffect(() => {
+        const unsubscribe = getPartners(setPartners);
+        return () => unsubscribe();
+    }, []);
+
     const value = {
         branches,
-        statistics
+        statistics,
+        partners
     };
 
     return <BranchContext.Provider value={value} {...props} />;

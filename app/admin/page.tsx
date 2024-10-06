@@ -5,6 +5,7 @@ import { useState } from "react";
 import EntryField from "./components/EntryField";
 import BranchDashboard from "./components/BranchDashboard";
 import StatisticsDashboard from "./components/StatisticsDashboard";
+import PartnersDashboard from "./components/PartnersDashboard";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
@@ -19,7 +20,7 @@ const Admin = () => {
     <div className="w-[100vw]">
         <NavBar transparent={false} />
         <div className="h-[85vh]
-        max-[1000px]:hidden max-w-[1000px] w-full mx-auto">
+        max-[1200px]:hidden max-w-[1200px] w-full mx-auto">
             {adminStatus ? (
                 <div className="w-full h-full py-24
                 flex flex-col justify-start items-center">
@@ -28,11 +29,15 @@ const Admin = () => {
                             className={`${activeState === "branches" ? "text-black underline" : "text-gray-300"}`}>Branches</button>
                         <button onClick={() => setActiveState("statistics")}
                             className={`${activeState === "statistics" ? "text-black underline" : "text-gray-300"}`}>Statistics</button>
+                        <button onClick={() => setActiveState("partners")}
+                            className={`${activeState === "partners" ? "text-black underline" : "text-gray-300"}`}>Partners</button>
                     </div>
                     {activeState === "branches" ? (
                         <BranchDashboard />
-                    ) : (
+                    ) : activeState === "statistics" ? (
                         <StatisticsDashboard />
+                    ) : (
+                        <PartnersDashboard />
                     )}
                 </div>
             ) : (

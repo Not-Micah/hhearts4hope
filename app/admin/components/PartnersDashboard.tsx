@@ -1,56 +1,57 @@
 "use client";
 
 import { useBranchData } from "@/providers/useBranchData";
-import useBranchModal from "@/hooks/useBranchModal";
+usePartnerModal
 import BranchItem from "./BranchItem";
+import usePartnerModal from "@/hooks/usePartnersModal";
 
-const BranchDashboard = () => {
-  const { branches } = useBranchData();
+const PartnersDashboard = () => {
+  const { partners } = useBranchData();
 
   const {
-    setNewBranch,
-    onOpen: openBranchModal,
-    setCurrentBranch,
+    setNewPartner,
+    onOpen: openPartnerModal,
+    setCurrentPartner,
     updated,
     setUpdated
-  } = useBranchModal();
+  } = usePartnerModal();
 
-  if (branches === null) {
+  if (partners === null) {
     return <div>Loading</div>;
   }
 
   return (
     <div className="flex flex-col justify-center items-center gap-y-6
     overflow-y-scroll no-scrollbar py-12 w-full">
-      <h3 className="dynamic-subheading font-semibold">Branches</h3>
+      <h3 className="dynamic-subheading font-semibold">Partners</h3>
       <div className="flex flex-col justify-center items-start gap-y-2 w-full">
-        {branches && branches.map((item, index) => (
+        {partners && partners.map((partner, index) => (
           <div
             key={index}
             className="flex flex-row justify-between items-center gap-x-4
             w-full border-b-2 pb-3"
           >
-              <BranchItem branch={item} />
+              {/* <BranchItem branch={item} /> */}
           </div>
         ))}
       </div>
       <button
         onClick={() => {
           // Clearing the Data
-          setCurrentBranch(null);
-          setNewBranch(true);
+          setCurrentPartner(null);
+          setNewPartner(true);
           setUpdated(!updated);
 
           // Opening the Modal
-          openBranchModal();
+          openPartnerModal();
         }}
         className="px-6 py-2 bg-primary rounded-full
         text-white font-bold"
       >
-        Create Branch
+        Create Partner
       </button>
     </div>
   );
 };
 
-export default BranchDashboard;
+export default PartnersDashboard;

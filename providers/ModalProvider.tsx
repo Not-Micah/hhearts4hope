@@ -7,6 +7,7 @@ import DeleteConfirmationModal from "@/components/Modals/DeleteConfirmationModal
 import GalleryModal from "@/components/Modals/GalleryItemModal";
 import StatisticsModal from "@/components/Modals/StatisticsModal";
 import GalleryDisplayModal from "@/components/Modals/GalleryDisplayModal";
+import PartnerModal from "@/components/Modals/PartnersModal";
 
 const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -20,13 +21,14 @@ const ModalProvider = () => {
   }
 
   return (
-    <>
+    <div>
         <BranchModal />
         <DeleteConfirmationModal />
         <GalleryModal />
         <StatisticsModal />
         <GalleryDisplayModal />
-    </>
+        <PartnerModal />
+    </div>
   );
 };
 
