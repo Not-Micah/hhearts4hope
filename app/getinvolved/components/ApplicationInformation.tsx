@@ -21,7 +21,7 @@ const ApplicationInformation = () => {
               key={index}
               className="flex flex-col justify-start items-start gap-y-2
               shadow-lg px-8 py-14 rounded-lg bg-white
-              w-full hover:scale-[102.5%] transition-all duration-150">
+              w-full">
               <div className="text-7xl text-primary/60 bg-[#fdc4c4] drop-shadow-[0px_4px_0px_rgba(251,153,153,1)] mb-6 p-4 rounded-lg">
                 {signUp.icon}
               </div>

@@ -34,9 +34,7 @@ export const services = [
   },
 ];
 
-import { PiHandHeartDuotone } from "react-icons/pi";
-import { PiMoneyWavyDuotone } from "react-icons/pi";
-import { PiUserDuotone } from "react-icons/pi";
+import { PiMoneyWavyDuotone, PiHandHeartDuotone, PiUserDuotone, PiChatsCircleDuotone } from "react-icons/pi";
 
 export const signUps = [
   {
@@ -61,6 +59,15 @@ export const signUps = [
     icon: <PiUserDuotone />,
     img: "/splash_two.png",
     title: "Start a Branch",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
+    redirectLink: "",
+    formLinks: [{label: "Google Form", link: ""}]
+  },
+  {
+    icon: <PiChatsCircleDuotone />,
+    img: "/splash_two.png",
+    title: "Become a Partner",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
     redirectLink: "",
