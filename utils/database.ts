@@ -410,3 +410,115 @@ export const editStatistic = async (
         console.error("Error updating statistic:", error);
     }
 };
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const getPartners = (setPartners: (partners: DocumentData[]) => void) => {
+    const app = initializeFirebase();
+    const firestore = getFirestore(app);
+
+    const partnersCollection = collection(firestore, 'partners');
+
+    const unsubscribe = onSnapshot(partnersCollection, (querySnapshot) => {
+        const partners: DocumentData[] = [];
+        querySnapshot.forEach((doc) => {
+            partners.push(doc.data());
+        });
+        setPartners(partners);
+    });
+
+    return unsubscribe;
+};
+
+export const addPartner = async (
+    name: string,
+    description: string,
+    instagram: string,
+    website: string,
+    logo: File
+) => {
+    try {
+        const app = initializeFirebase();
+        const firestore = getFirestore(app);
+        const storage = getStorage(app);
+
+        // Upload photo to Firebase Storage
+        const photoRef = ref(storage, `partners/${logo.name}`);
+        await uploadBytes(photoRef, logo);
+        const photoURL = await getDownloadURL(photoRef);
+
+        const partnersCollection = collection(firestore, 'partners');
+        
+        // Add the branch document
+        const partnerDocRef = await addDoc(partnersCollection, {
+            name,
+            description,
+            instagram,
+            website,
+            photo: photoURL, 
+        });
+
+        toast.success("Successfully Added Partner");
+    } catch (error) {
+        toast.error("Oops! An Error Occurred...");
+    }
+};
+
+export const editPartner = async (
+    name: string,
+    description: string,
+    instagram: string,
+    website: string,
+    prevName: string,
+) => {
+    const app = initializeFirebase(); 
+    const firestore = getFirestore(app);
+
+    try {
+        const q = query(
+            collection(firestore, 'partners'),
+            where('name', '==', prevName)
+        );
+    
+        const querySnapshot = await getDocs(q);
+    
+        querySnapshot.forEach((doc) => {
+            updateDoc(doc.ref, {
+                name,
+                description,
+                instagram,
+                website
+            });
+        });
+    
+        toast.success("Successfully Edited Partner");
+    } catch (error) {
+        toast.error("Oops! An Error Occurred...");
+    }
+};
+
+export const deletePartner = async (name: string) => {
+    const app = initializeFirebase(); 
+    const firestore = getFirestore(app);
+
+    try {
+        const q = query(
+            collection(firestore, 'partners'), 
+            where('name', '==', name)
+        );
+    
+        const querySnapshot = await getDocs(q);
+    
+        querySnapshot.forEach((doc) => {
+            console.log(doc);
+            deleteDoc(doc.ref);
+        });
+    
+        toast.success("Successfully Deleted Partner");
+    } catch (error) {
+        toast.error("Oops! An Error Occurred...");
+    }
+};
