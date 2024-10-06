@@ -1,9 +1,11 @@
 "use client";
 
 import { useBranchData } from "@/providers/useBranchData";
-usePartnerModal
-import BranchItem from "./BranchItem";
 import usePartnerModal from "@/hooks/usePartnersModal";
+import { deletePartner } from "@/utils/database";
+
+import { MdModeEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 const PartnersDashboard = () => {
   const { partners } = useBranchData();
@@ -31,7 +33,31 @@ const PartnersDashboard = () => {
             className="flex flex-row justify-between items-center gap-x-4
             w-full border-b-2 pb-3"
           >
-              {/* <BranchItem branch={item} /> */}
+              <p className="font-title text-lg">{partner.name}</p>
+              <div className="flex justify-center items-center gap-x-4">
+                <button
+                    onClick={() => {
+                        // Setting Dialogue Data
+                        setCurrentPartner(partner);
+                        setNewPartner(false);
+                        setUpdated(!updated);
+
+                        // Opening the Modal
+                        openPartnerModal();
+                    }}
+                    className="text-lg"
+                >
+                    <MdModeEdit />
+                </button>
+                <button
+                    className="text-lg"
+                    onClick={() => {
+                        deletePartner(partner.name);
+                    }}
+                >
+                    <MdDelete />
+                </button>
+              </div>
           </div>
         ))}
       </div>

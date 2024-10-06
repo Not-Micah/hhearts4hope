@@ -27,17 +27,17 @@ const Admin = () => {
                     <div className="flex justify-center items-center gap-x-6">
                         <button onClick={() => setActiveState("branches")}
                             className={`${activeState === "branches" ? "text-black underline" : "text-gray-300"}`}>Branches</button>
-                        <button onClick={() => setActiveState("statistics")}
-                            className={`${activeState === "statistics" ? "text-black underline" : "text-gray-300"}`}>Statistics</button>
                         <button onClick={() => setActiveState("partners")}
                             className={`${activeState === "partners" ? "text-black underline" : "text-gray-300"}`}>Partners</button>
+                        <button onClick={() => setActiveState("statistics")}
+                            className={`${activeState === "statistics" ? "text-black underline" : "text-gray-300"}`}>Statistics</button>
                     </div>
                     {activeState === "branches" ? (
                         <BranchDashboard />
-                    ) : activeState === "statistics" ? (
-                        <StatisticsDashboard />
-                    ) : (
+                    ) : activeState === "partners" ? (
                         <PartnersDashboard />
+                    ) : (
+                        <StatisticsDashboard />
                     )}
                 </div>
             ) : (
