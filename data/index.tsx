@@ -39,6 +39,15 @@ import { PiMoneyWavyDuotone, PiHandHeartDuotone, PiUserDuotone, PiChatsCircleDuo
 
 export const signUps = [
   {
+    icon: <PiUserDuotone />,
+    img: "/splash_two.png",
+    title: "Start a Branch",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
+    redirectLink: "",
+    formLinks: [{label: "Google Form", link: ""}]
+  },
+  {
     icon: <PiMoneyWavyDuotone />,
     img: "/donate.jpg",
     title: "Donate",
@@ -51,15 +60,6 @@ export const signUps = [
     icon: <PiHandHeartDuotone />,
     img: "/volunteer.jpg",
     title: "Volunteer",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
-    redirectLink: "",
-    formLinks: [{label: "Google Form", link: ""}]
-  },
-  {
-    icon: <PiUserDuotone />,
-    img: "/splash_two.png",
-    title: "Start a Branch",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
     redirectLink: "",
