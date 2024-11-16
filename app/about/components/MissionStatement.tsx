@@ -9,7 +9,7 @@ const MissionStatement = () => {
         absolute left-[50px] top-1/2 transform -translate-y-1/2
         max-lg:left-x'>What are we about?</h3>
       </div>
-      <div className="max-w-max mx-auto w-full my-44
+      <div className="max-w-max mx-auto w-full my-24
       max-lg:my-8
       px-x py-8 flex flex-col justify-start items-start gap-y-8">
         <h3 className='dynamic-subheading'>Our Mission</h3>
