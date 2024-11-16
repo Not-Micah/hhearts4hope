@@ -5,34 +5,36 @@ export const navItems = [
   { label: "Get Involved", link: "/getinvolved" },
 ];
 
-import { BsCollectionFill } from "react-icons/bs";
-import { FaRecycle, FaDonate, FaPaintBrush } from "react-icons/fa";
+import { MdOutlineVolunteerActivism } from "react-icons/md";
+import { FaDonate } from "react-icons/fa";
+import { PiChalkboardTeacher } from "react-icons/pi";
+import { FaUserDoctor } from "react-icons/fa6";
 
 export const services = [
   {
     icon: <FaDonate />,
-    title: "Lorem",
+    title: "Fundraising",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
+      "Our branches fundraise to promote low-cost CPR certification and help those affected with heart disease with financial and emotional support. We also donate to existing organizations to help with medical relief.",
   },
   {
-    icon: <FaDonate />,
-    title: "Lorem",
+    icon: <FaUserDoctor />,
+    title: "Healthy Lifestyle",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
+      "We strive to promote healthier lifestyle choices to better our communities and educate people of all ages.",
   },
   {
-    icon: <FaDonate />,
-    title: "Lorem",
+    icon: <PiChalkboardTeacher />,
+    title: "Education",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
+      "Our organization takes pride in promoting heart-health education to raise awareness on heart disease and reduce its effects on people, especially in schools where people are still developing. We also bring in professionals in the field to educate students to further better their understanding.",
   },
   {
-    icon: <FaDonate />,
-    title: "Lorem",
+    icon: <MdOutlineVolunteerActivism />,
+    title: "Volunteer",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
-  },
+      "Our branches create community and school-wide events to work towards our mission, in addition to volunteering at existing events in their communities. This not only promotes our cause, but also helps build our communities in other aspects.",
+  }
 ];
 
 import { PiMoneyWavyDuotone, PiHandHeartDuotone, PiUserDuotone, PiChatsCircleDuotone } from "react-icons/pi";
@@ -43,9 +45,9 @@ export const signUps = [
     img: "/splash_two.png",
     title: "Start a Branch",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
+      "We are always looking to expand our movement to new places all over the world! If you are interested in starting a branch, fill out this form!",
     redirectLink: "",
-    formLinks: [{label: "Google Form", link: ""}]
+    formLinks: [{label: "Google Form", link: "https://docs.google.com/forms/d/1_7gjh3s7oWwWlRLpDfBl8IY7MblXGUMasFC-d1FxM-0/edit"}]
   },
   {
     icon: <PiMoneyWavyDuotone />,
@@ -54,25 +56,25 @@ export const signUps = [
     description:
       "Donations are always appreciated and go a long way to help our cause. Your donation will contribute to giving people a second chance and aiding their heart disease recovery process. In addition, you will be allowing for low cost CPR certifications worldwide to potentially save a life.",
     redirectLink: "",
-    formLinks: [{label: "GoFundMe", link: ""}, {label: "PayPal", link: ""}]
+    formLinks: [{label: "GoFundMe", link: "https://gofund.me/13dd91d0"}]
   },
   {
     icon: <PiHandHeartDuotone />,
     img: "/volunteer.jpg",
     title: "Volunteer",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
+      "If you are interested in volunteering with us, fill out the form below or send us an email!",
     redirectLink: "",
-    formLinks: [{label: "Google Form", link: ""}]
+    formLinks: [{label: "Google Form", link: "https://forms.gle/U4nVkuj1jBYm4rJKA"}]
   },
   {
     icon: <PiChatsCircleDuotone />,
     img: "/splash_two.png",
     title: "Become a Partner",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nihil eum laboriosam eos possimus ipsum, repellat et deserunt quasi neque.",
+      "If you are an organization, business, etc. and are interested in a partnership, fill out this form!",
     redirectLink: "",
-    formLinks: [{label: "Google Form", link: ""}]
+    formLinks: [{label: "Google Form", link: "https://forms.gle/oCtAhXRcgxGJeNdA8"}]
   },
 ];
 
@@ -118,9 +120,9 @@ export const testimonials = [
 ];
 
 export const contacts = [
-  "Phone: 123123123",
+  "Phone: Coming Soon",
   "Email: hearts4hope@gmail.com",
-  "Address: Pineapple Street NYC",
+  "Address: Email For More Information",
 ];
 
 import { FaInstagram, FaFacebook } from "react-icons/fa";

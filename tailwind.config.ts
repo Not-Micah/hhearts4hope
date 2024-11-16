@@ -23,7 +23,7 @@ const config: Config = {
         body: ['Nunito', 'sans-serif'], 
       },
       maxWidth: {
-        'max': '1300px',
+        'max': '1600px',
       },
       spacing: {
         'x': '20px', 

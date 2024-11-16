@@ -8,13 +8,16 @@ const SignUps = () => {
       {signUps.map((signUp, index) => (
         <div
           key={index}
-          className={`flex flex-row gap-x-20 ${index % 2 !== 0 && 'flex-row-reverse'}
-          max-lg:flex-col`}
+          className="grid grid-cols-2 gap-x-20
+          max-lg:flex max-lg:flex-col"
         >
-          <img src={signUp.img} className="w-full h-[300px] object-cover 
+          <img src={signUp.img} className={`w-full h-[300px] object-cover 
           rounded-xl shadow-md
-          max-lg:h-auto max-lg:mb-14" />
-          <div className="flex flex-col justify-center items-start gap-y-6">
+          max-lg:h-auto max-lg:mb-14
+          ${index % 2 !== 0 && 'lg:order-2'}
+          `} />
+          <div className={`flex flex-col justify-center items-start gap-y-6
+            ${index % 2 !== 0 && 'lg:order-1'}`}>
             <h3 className="dynamic-subheading">{signUp.title}</h3>
             <p className="dynamic-text mb-4">{signUp.description}</p>
             <button className="primary-button

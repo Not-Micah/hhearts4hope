@@ -8,7 +8,7 @@ const Footer = () => {
     '>
         <div className="flex flex-col gap-y-2">
             <div className="
-                max-w-[1000px]
+                max-w-max
                 flex flex-row justify-between items-start gap-x-80
                 max-lg:flex-col max-lg:gap-y-11
             ">

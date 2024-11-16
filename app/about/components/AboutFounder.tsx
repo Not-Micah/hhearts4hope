@@ -21,19 +21,12 @@ const AboutFounder = () => {
         max-[1131px]:h-full max-[1131px]:mt-8 max-[1131px]:pb-12">
           <h3 className="dynamic-subheading">About the Founder</h3>
           <p className="dynamic-text">
-            Naya Hamadeh is a highschooler from Dearborn, Michigan who is
-            passionate about the medical field and wants to make a difference.
-            Heart disease has always been a subject that affected her and her
-            family deeply, and after her uncle passed away simply because of not
-            being aware or taking care of his heart disease, it was inevitable
-            that something needed to be done. That was when she decided to found
-            the Hearts for Hope Movement, and after she established that idea it
-            was just a never ending spiral. It was originally only supposed to
-            be a school club, but seeing how interested her peers were and how
-            much of a difference she could make, she decided to make it a
-            worldwide non profit organization. Today, we have about eight
-            branches worldwide and counting, each addition helping more and more
-            to change lives and support our cause.
+            Naya Hamadeh is a highschooler from Dearborn, Michigan who is passionate about the medical 
+            field and wants to make a difference. Heart disease has always been a subject that affected her and her family deeply, 
+            and after her uncle passed away simply because of not being aware or taking care of his heart disease, it was inevitable that something 
+            needed to be done. That was when she decided to found the Hearts for Hope Movement, and after she established that idea it was just a never ending spiral. 
+            It was originally only supposed to be a school club, but seeing how interested her peers were and how much of a difference she could make, 
+            she decided to expand into a worldwide movement. Today, she works to expand her impact and make a difference in any way she can.
           </p>
         </div>
       </div>
