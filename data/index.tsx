@@ -42,7 +42,7 @@ import { PiMoneyWavyDuotone, PiHandHeartDuotone, PiUserDuotone, PiChatsCircleDuo
 export const signUps = [
   {
     icon: <PiUserDuotone />,
-    img: "/splash_two.png",
+    img: "/splash_one.jpg",
     title: "Start a Branch",
     description:
       "We are always looking to expand our movement to new places all over the world! If you are interested in starting a branch, fill out this form!",
@@ -51,7 +51,7 @@ export const signUps = [
   },
   {
     icon: <PiMoneyWavyDuotone />,
-    img: "/donate.jpg",
+    img: "/splash_one.jpg",
     title: "Donate",
     description:
       "Donations are always appreciated and go a long way to help our cause. Your donation will contribute to giving people a second chance and aiding their heart disease recovery process. In addition, you will be allowing for low cost CPR certifications worldwide to potentially save a life.",
@@ -60,7 +60,7 @@ export const signUps = [
   },
   {
     icon: <PiHandHeartDuotone />,
-    img: "/volunteer.jpg",
+    img: "/splash_one.jpg",
     title: "Volunteer",
     description:
       "If you are interested in volunteering with us, fill out the form below or send us an email!",
@@ -69,7 +69,7 @@ export const signUps = [
   },
   {
     icon: <PiChatsCircleDuotone />,
-    img: "/splash_two.png",
+    img: "/splash_one.jpg",
     title: "Become a Partner",
     description:
       "If you are an organization, business, etc. and are interested in a partnership, fill out this form!",

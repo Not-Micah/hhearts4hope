@@ -7,7 +7,7 @@ const Hero = () => {
       flex justify-center items-center 
       relative overflow-hidden -z-20'
     >
-        <img src="/hero.jpg" className='absolute opacity-15 -z-10
+        <img src="/splash_one.jpg" className='absolute opacity-15 -z-10
         w-full h-full object-cover blur-[2px]' />
         <div className="
         max-w-max w-full justify-start items-center px-x

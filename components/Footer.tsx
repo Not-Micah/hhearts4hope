@@ -6,16 +6,16 @@ const Footer = () => {
         w-[100vw] py-12 px-8 bg-gray-100
         flex justify-center items-center
     '>
-        <div className="flex flex-col gap-y-2">
+        <div className="flex flex-col gap-y-2
+        max-w-max w-full">
             <div className="
-                max-w-max
                 flex flex-row justify-between items-start gap-x-80
                 max-lg:flex-col max-lg:gap-y-11
             ">
                 <div className="flex flex-col justify-center items-start gap-y-7">
                     <img src="/logo.png" className='w-[100px]' />
                     <p className="text-body text-sm">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi doloribus perspiciatis soluta nemo blanditiis nulla atque porro ut nihil harum voluptates quo, cupiditate cum, debitis rerum? Eaque, cupiditate eum ad nulla tenetur corporis! Id, perspiciatis.
+                    Join us to fight against heart disease and better communities all over the world!
                     </p>
                 </div>
                 <div className="flex flex-row justify-center items-start gap-x-12
